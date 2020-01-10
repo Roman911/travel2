@@ -5,7 +5,6 @@ import validateForm from "../../../utils/validate";
 const axios = require('axios').default;
 
 export default withFormik({
-
   mapPropsToValues: () => ({ name: '', email: '', password: '' }),
   validate: values => {
     let errors = {};

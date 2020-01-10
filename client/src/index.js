@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 moment.locale('uk');
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <App/>
   </Provider>,
   document.getElementById('root')

@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 
-import news from "./news";
+const reducers = ['news', 'user'];
 
-export default combineReducers({
-  news
-})
+export default combineReducers(
+  reducers.reduce((initial, name) => {
+    initial[name] = require(`./${ name }`).default;
+    return initial;
+  }, {}),
+)

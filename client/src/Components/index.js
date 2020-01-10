@@ -1,6 +1,6 @@
 export { NavBar } from './NavBar/NavBar';
 export { Language } from './Language/Language';
-export { DropdownMenu } from './DropdownMenu/index';
+export { DropdownMenu } from './DropdownMenu';
 
 export { Home } from './Home/Home';
 export { New } from './New/New';
@@ -19,6 +19,7 @@ export { About } from './About/index';
 
 export { InfoBar } from './InfoBar/index';
 
-export { LoginForm } from '../modules/LoginForm/Components/index';
+export { LoginForm } from '../modules/LoginForm/Components/Login';
 
-export { Loading } from './Loading/Loading'
+export { Loading } from './Loading/Loading';
+export { ShowError } from './ShowError/ShowError';

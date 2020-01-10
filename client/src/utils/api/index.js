@@ -1,1 +1,1 @@
-export { default as newsApi } from "./news";
+export { default as userApi } from "./user";

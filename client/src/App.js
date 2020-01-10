@@ -4,10 +4,12 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { NavBar, Home, Article, Maps, About, LoginForm } from './Components';
-import { RegisterForm } from "./modules";
+import { NavBar, Home, Article, Maps, About,  } from './Components';
+import { RegisterForm, LoginForm } from "./modules";
+import { UseAuth } from "./hooks/auth.hook";
 
-const App: React.FC = () => {
+const App = () => {
+  UseAuth();
   return (
     <Router>
       <div>

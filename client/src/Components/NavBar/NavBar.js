@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { Language } from "../index";
-import { useRoutes } from "../Routes/Routes";
+import UseRoutes from '../Routes/Routes'
 
 import baseStyles from '../../styles/index';
 import styles from './navBarStyles';
@@ -14,8 +14,6 @@ import styles from './navBarStyles';
 import { baseText } from '../../assets/baseUK';
 
 export const NavBar = () => {
-
-  const routes = useRoutes(false);
   
   const links = baseText.navBar.map((item, index) => {
     return <li key={ index }>
@@ -36,7 +34,7 @@ export const NavBar = () => {
           <input placeholder='Search' type="text"/>
           <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faSearch }/>
         </div>
-        { routes }
+        <UseRoutes />
         <Language />
       </div>
     </div>

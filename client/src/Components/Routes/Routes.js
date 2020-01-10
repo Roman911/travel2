@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
+import { connect } from "react-redux";
 import { css } from "aphrodite/no-important";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faAngleDown, faBell, faUser} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faBell, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import baseStyles from "../../styles";
 import styles from "./RoutesStyles";
 import avatar from "../../assets/01.jpg";
 import { DropdownMenu } from "../DropdownMenu";
 
-export const useRoutes = isAuthenticated => {
+const UseRoutes = ({ data }) => {
 
+  const isAuthenticated = !!data;
+  
   const [dropdown, setDropdown] = useState(false);
 
   function handleClick() {
@@ -36,3 +39,5 @@ export const useRoutes = isAuthenticated => {
     </div>
   </Link>
 };
+
+export default connect(({ user }) => user)(UseRoutes)

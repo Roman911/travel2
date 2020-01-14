@@ -1,6 +1,6 @@
 export { NavBar } from './NavBar/NavBar';
 export { Language } from './Language/Language';
-export { DropdownMenu } from './DropdownMenu';
+
 
 export { Home } from './Home/Home';
 export { New } from './New/New';

@@ -10,9 +10,9 @@ const Actions = {
     return userApi.login(postData).then(({ data }) => {
       dispatch(Actions.setData(data));
       localStorage.setItem('userData', JSON.stringify({
-        userId: data.userId, token: data.token
-      }))
-    })
+        userId: data.userId, token: data.token, name: data.name, avatar: data.avatar
+      }));
+    });
   }
 };
 

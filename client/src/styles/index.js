@@ -49,6 +49,7 @@ export default StyleSheet.create({
   },
   imgAv: {
     borderRadius: '50%',
-    width: 40
+    width: 40,
+    height: 40
   }
 })

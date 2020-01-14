@@ -19,7 +19,7 @@ const App = () => {
           <Route component={ Maps } path="/maps" />
           <Route component={ Article } path='/article' />
           <Route component={ About } path="/about" />
-          <Route component={ LoginForm } path="/login" />
+          <Route component={ LoginForm } path="/login" hhh={123} />
           <Route component={ RegisterForm } path="/register" />
         </Switch>
       </div>

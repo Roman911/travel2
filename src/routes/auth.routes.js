@@ -31,7 +31,7 @@ router.post(
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
-      const user = new UserModel({email, name, password: hashedPassword});
+      const user = new UserModel({email, name, password: hashedPassword, avatar: 'undefined'});
 
       await user.save();
       res.status(201).json({message: "Пользователь создан"})
@@ -77,7 +77,7 @@ router.post(
         { expiresIn: '1h' }
       );
 
-      res.json({ token, userId: user.id })
+      res.json({ token, userId: user.id, name: user.name, avatar: user.avatar })
     } catch (e) {
       res.status(500).json({message: "Что-то пошло не так, попробуйте снова"})
     }

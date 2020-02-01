@@ -21,7 +21,7 @@ export const NavBar = () => {
     </li>
   });
 
-  return <nav className={ css(styles.nav) }>
+  return <nav className={ css(styles.nav, baseStyles.boxShadow) }>
     <div className={ css(baseStyles.wrapper, baseStyles.flexSB) }>
       <div className={ css(baseStyles.flexSB) }>
         <div className={ css(styles.logo) } />

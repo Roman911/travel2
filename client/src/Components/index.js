@@ -20,6 +20,7 @@ export { About } from './About/index';
 export { InfoBar } from './InfoBar/index';
 
 export { LoginForm } from '../modules/LoginForm/Components/Login';
+export { FormItem } from './FormItem/FormItem';
 
 export { Loading } from './Loading/Loading';
 export { ShowError } from './ShowError/ShowError';

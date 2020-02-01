@@ -10,7 +10,7 @@ import { UserName, InfoBar, ArticleStats, AddedComment } from "../index";
 
 export const Article:React.FC = () => {
   return <div className={ css(baseStyles.wrapper, baseStyles.flexVFS, styles.wrapperL) }>
-    <div className={ css(styles.wrapper) }>
+    <div className={ css(styles.wrapper, baseStyles.boxShadow) }>
       <UserName isArticle={ true } />
       <h2 className={ css(styles.title) }>{ article.tittle }</h2>
       <p className={ css(styles.text) }>{ article.subTittle }</p>

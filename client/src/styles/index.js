@@ -1,10 +1,10 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { widthXL, heightIconXL, colorIcons } from "../variabels";
+import { widthL, heightIconXL, colorIcons, colorShadow } from "../variabels";
 
 export default StyleSheet.create({
   wrapper: {
-    maxWidth: widthXL,
+    maxWidth: widthL,
     margin: '0 auto',
     padding: '10px 20px'
   },
@@ -24,6 +24,9 @@ export default StyleSheet.create({
   },
   block: {
     padding: '10px 0'
+  },
+  boxShadow: {
+    boxShadow: `3px 0px 20px ${colorShadow}`,
   },
   icon: {
     height: heightIconXL,

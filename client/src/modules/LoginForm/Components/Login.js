@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import { css } from 'aphrodite/no-important';
 
+import { FormItem, ShowError } from "../../../Components";
 import loginStyles from './../../../styles/loginStyles';
-import { ShowError } from "../../../Components";
 
 export const LoginForm = props => {
   const {
@@ -35,28 +35,8 @@ export const LoginForm = props => {
     { errorStatus ? <ShowError status={errorStatus} handleClick={handleClick} /> : '' }
     <form onSubmit={handleSubmit}>
       <div className={ css(loginStyles.wrapperForm) }>
-        <p className={ css(loginStyles.textP) }>Username or email address</p>
-        <input
-          id="email"
-          className={ errors.email && touched.email ? css(loginStyles.input, loginStyles.error) : css(loginStyles.input) }
-          type="text"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {errors.email &&
-        touched.email && (
-          <div className="input-feedback">{errors.email}</div>
-        )}
-        <p className={ css(loginStyles.textP) }>Password</p>
-        <input
-          id="password"
-          className={ errors.password && touched.password ? css(loginStyles.input, loginStyles.error) : css(loginStyles.input) }
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          type="password"
-        />
+        <FormItem tittle='Username or email address' id="email" type="text" value={values.email} onChange={handleChange} onBlur={handleBlur} errors={errors.email} touched={touched.email} />
+        <FormItem tittle='Password' id="password" type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} errors={errors.password} touched={touched.password} />
         <input
           className={ css(loginStyles.inputSub) }
           type="submit"

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200&display=swap&subset=cyrillic');
+
 body {
   margin: 0;
   font-family: helvetica,arial sans-serif;
@@ -36,12 +38,13 @@ a {
   font-size: 1.1rem;
   color: #333333;
 }
-input {
+input, textarea {
   border: none;
   font-size: 1rem;
   padding: 5px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 100%;
+  line-height: 1.4rem;
 }
 button {
   border: none;

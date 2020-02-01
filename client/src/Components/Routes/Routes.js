@@ -21,12 +21,8 @@ const UseRoutes = ({ data }) => {
     !dropdown ? setDropdown(true) : setDropdown(false)
   }
 
-
-
   const bggg = () => {
     if (data) {
-
-      console.log(data.avatar);
 
       const bg = data.avatar !== 'undefined' ? { background: `url(${avatar})` } : { background: '#4196e0', color: '#fff', fontSize: '20px', justifyContent: 'center' };
       const buk = data ? data.name[0].toUpperCase() : '' ;

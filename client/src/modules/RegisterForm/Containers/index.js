@@ -4,7 +4,7 @@ import validateForm from "../../../utils/validate";
 
 const axios = require('axios').default;
 
-export default withFormik({
+const RegisterFormContainer = withFormik({
   mapPropsToValues: () => ({ name: '', email: '', password: '' }),
   validate: values => {
     let errors = {};
@@ -13,6 +13,7 @@ export default withFormik({
 
     return errors;
   },
+
   handleSubmit: (values, { setSubmitting }) => {
     axios({
       method: 'post',
@@ -22,4 +23,6 @@ export default withFormik({
     setSubmitting(false)
   },
   displayName: 'RegisterForm'
-})(RegisterForm)
+})(RegisterForm);
+
+export default RegisterFormContainer

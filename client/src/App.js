@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { NavBar, Home, Article, Maps, About,  } from './Components';
-import { RegisterForm, LoginForm } from "./modules";
+import { RegisterForm, LoginForm, PostCreateFormContainer } from "./modules";
 import { UseAuth } from "./hooks/auth.hook";
 
 const App = () => {
@@ -19,8 +19,9 @@ const App = () => {
           <Route component={ Maps } path="/maps" />
           <Route component={ Article } path='/article' />
           <Route component={ About } path="/about" />
-          <Route component={ LoginForm } path="/login" hhh={123} />
+          <Route component={ LoginForm } path="/login" />
           <Route component={ RegisterForm } path="/register" />
+          <Route component={ PostCreateFormContainer } path="/post-create" />
         </Switch>
       </div>
     </Router>

@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.use(updateLastSeen);
 
 app.use('/auth', require('./routes/auth.routes'));
+app.use('/post', require('./routes/post.routes'));
 
 const ArticleCtrl = new ArticleController();
 

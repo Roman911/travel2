@@ -6,7 +6,6 @@ const background = `url(${basesImg}) no-repeat`;
 export default StyleSheet.create({
   nav: {
     background: '#fff',
-    boxShadow: '0 0 5px 2px gray',
     width: '100%',
     zIndex: 2,
     top: 0

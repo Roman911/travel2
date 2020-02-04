@@ -20,7 +20,7 @@ const PostCreateFormContainer = withFormik({
 
   handleSubmit: (values, { setSubmitting, setStatus }) => {
 
-    const tags = values.tag.split(' ');
+    const tags = values.tag.split(', ');
     const coordinates = [values.coordinateY, values.coordinateX];
 
     const postData = {

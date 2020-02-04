@@ -1,15 +1,14 @@
 export { NavBar } from './NavBar/NavBar';
 export { Language } from './Language/Language';
-
+export { Avatar } from './Avatar/Avatar';
+export { SectionTitle } from './SectionTitle/SectionTitle';
 
 export { Home } from './Home/Home';
 export { New } from './New/New';
 
 export { Date } from './Date/index';
 
-export { UserName } from './UserName/index';
-export { ArticleStats } from './ArticleStats/index';
-export { Article } from './Article/index';
+export { ArticleStats } from './ArticleStats/ArticleStats';
 
 export { AddedComment } from './AddedComment/index';
 

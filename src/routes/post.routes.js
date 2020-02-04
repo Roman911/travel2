@@ -10,7 +10,7 @@ router.post(
 
       const {title, idAuthor, type_material, cover, link, tags, price, small_text, coordinates, photo, text} = req.body;
 
-      const post = new PostModel({title, idAuthor, type_material, cover, link, tags, price, small_text, coordinates, photo, text, views: null});
+      const post = new PostModel({title, idAuthor, type_material, cover, link, tags, price, small_text, coordinates, photo, text, views: 0});
 
       await post.save();
       res.status(201).json({message: "Статю створено"});
@@ -42,7 +42,7 @@ router.get(
   async (req, res) => {
     try {
       const id = req.params.id;
-      PostModel.findById(id)
+      PostModel.findById({_id: id})
         .exec(function (err, article) {
           if (err) {
             return res.status(404).json({

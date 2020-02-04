@@ -3,6 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import { isEmail } from 'validator';
 
 export interface IUser extends Document{
+  idAuthor: string,
   email: string,
   avatar: string,
   name: string,
@@ -14,6 +15,7 @@ export interface IUser extends Document{
 }
 
 const UserSchema = new Schema({
+  idAuthor: String,
   email: {
     type: String,
     required: 'Email address is required',

@@ -23,7 +23,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   block: {
-    padding: '10px 0'
+    paddingBottom: 10
   },
   boxShadow: {
     boxShadow: `3px 0px 20px ${colorShadow}`,

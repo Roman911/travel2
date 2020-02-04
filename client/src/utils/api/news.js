@@ -1,5 +1,5 @@
-import { axios } from 'core';
+import axios from 'axios';
 
 export default {
-  getAll: () => axios.get('/news')
+  login: () => axios.get('/post/')
 }

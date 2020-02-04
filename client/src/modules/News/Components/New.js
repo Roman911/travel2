@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import img from '../../../assets/file.jpg';
 
@@ -6,22 +7,27 @@ import { css } from 'aphrodite/no-important';
 import baseStyles from '../../../styles/index';
 import styles from './newsStyles';
 
-import { UserName, ArticleStats } from "../../../Components";
+import { ArticleStats } from "../../../Components";
+import { Author } from '../../index'
 
-export const New = ({ title, body }) => {
+export const New = ({ id, title, small_text, idAuthor, createdAt, cover, views }) => {
   return <div className={ css(styles.wrapper) }>
     <div className={ css(styles.content) }>
-      <img className={ css(styles.img) } src={ img } alt=""/>
+      <Link to={`/post/${ id }`}>
+        <img className={ css(styles.img) } src={ cover } alt=""/>
+      </Link>
       <div className={ css(styles.block) }>
-        <UserName isArticle={ false } />
+        <Author isArticle={ false } idAuthor={idAuthor} createdAt={createdAt} />
+        <Link to={`/post/${ id }`} >
         <div className={ css(baseStyles.block) }>
           <h3>{ title }</h3>
-          <p>{ body }</p>
+          <p>{ small_text }</p>
         </div>
+        </Link>
       </div>
     </div>
     <div className={ css(styles.block) }>
-      <ArticleStats isArticle={ false } />
+      <ArticleStats isArticle={ false } views={ views } />
     </div>
   </div>
 };

@@ -8,14 +8,16 @@ import baseStyles from './../../styles/index';
 import styles from './articleStatsStyles';
 
 interface ArticleStatsProps {
-  isArticle:boolean
+  isArticle:boolean,
+  views:number
 }
 
-export const ArticleStats:React.FC<ArticleStatsProps> = ({ isArticle }) => {
+export const ArticleStats:React.FC<ArticleStatsProps> = ({ isArticle, views }) => {
   return <div className={css(baseStyles.flexSB, baseStyles.block, styles.bottom)}>
     <div className={css(baseStyles.flex)}>
       <span className={css(baseStyles.views)}>
-        0 views
+
+        { views === 0 ? '' : views ===1 ? `${ views } перегляд` : views === 2 ? `${ views } перегляди` : `${ views } переглядів` }
         <FontAwesomeIcon className={css(baseStyles.iconS)} icon={faEye}/>
       </span>
       { !isArticle

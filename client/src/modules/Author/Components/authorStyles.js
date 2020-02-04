@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { colorIcons } from "./../../variabels";
+import { colorIcons } from "../../../variabels";
 
 export default StyleSheet.create({
   name: {

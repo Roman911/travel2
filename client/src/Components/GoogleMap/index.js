@@ -3,8 +3,8 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "reac
 
 import icon from '../../assets/castle.jpg';
 
-import Background from './../Background';
 import mapStyles from "./mapStyles";
+import {SectionTitle} from "..";
 
 const marks = [
   {
@@ -61,7 +61,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export const Maps = () => {
   return <div>
-    <Background />
+    <SectionTitle title='Карта' />
     <div style={{ width: '1000px', margin: '0 auto' }}>
       <WrappedMap
         googleMapURL = { 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDLRRgxqKe9Ok-an59Hh7qxfKZG0mGqHW8' }

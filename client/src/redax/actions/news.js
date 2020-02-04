@@ -1,4 +1,4 @@
-import axios from "axios";
+import { newsApi } from "../../utils/api";
 
 const actions = {
   setNews: items => ({
@@ -6,10 +6,10 @@ const actions = {
     payload: items
   }),
   fetchNews: () => dispatch => {
-    axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
+    newsApi.login()
       .then(({data}) => {
-        dispatch(actions.setNews(data))
-      })
+      dispatch(actions.setNews(data))
+    })
   }
 };
 

@@ -4,8 +4,8 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { NavBar, Home, Article, Maps, About,  } from './Components';
-import { RegisterForm, LoginForm, PostCreateFormContainer } from "./modules";
+import { NavBar, Home, Maps, About,  } from './Components';
+import { RegisterForm, LoginForm, PostCreateFormContainer, Posts } from "./modules";
 import { UseAuth } from "./hooks/auth.hook";
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <Switch>
           <Route component={ Home } path="/" exact />
           <Route component={ Maps } path="/maps" />
-          <Route component={ Article } path='/article' />
+          <Route component={ Posts } path='/post/:id' />
           <Route component={ About } path="/about" />
           <Route component={ LoginForm } path="/login" />
           <Route component={ RegisterForm } path="/register" />

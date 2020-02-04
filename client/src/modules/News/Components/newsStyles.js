@@ -7,6 +7,7 @@ export default StyleSheet.create({
     boxShadow: '5px 5px 8px 2px #a0a0a0',
     transition: '200ms',
     background: '#fff',
+    height: 'max-content',
     ':hover': {
       transform: 'scale(1.01, 1.01)',
       boxShadow: '5px 5px 10px 2px #676767'

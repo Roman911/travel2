@@ -1,17 +1,12 @@
 const initialState = {
-  items: [],
-  itemsPost: null
+  items: null
 };
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-    case 'NEWS:SET_ITEMS':
+    case 'AUTHOR:SET_DATA':
       return {
         items: payload
-      };
-    case 'POST:SET_DATA':
-      return {
-        itemsPost: payload
       };
     default:
       return state;

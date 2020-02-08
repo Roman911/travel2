@@ -1,32 +1,29 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { css } from 'aphrodite/no-important';
 
 import styles from './newsStyles';
-import { newsActions } from '../../../redax/actions/index';
 
 import { New } from '../Components/New';
 import { Loading } from "../../../Components/Loading/Loading";
 
-const News = ({ items, fetchNews }) => {
+import withHocs from './NewsTableHoc';
 
-  useEffect(() => {
-    if (!items.length) {
-      fetchNews()
-    }
-  }, [items, fetchNews]);
+const News = (props) => {
 
-  const article = !items ? <Loading /> : items.map((item, index) => {
+  const data = props.data;
+  const { posts = [] } = data;
+
+  const article = !posts ? <Loading /> : posts.map((item, index) => {
     return <New
       key={ index }
-      id={item._id}
+      id={item.id}
       title={item.title}
-      body={item.body}
       idAuthor={item.idAuthor}
-      date={item.createdAt}
+      date={item.last_seen}
       small_text={item.small_text}
       cover={item.cover}
       views={ item.views }
+      user={ item.user }
     />
   });
 
@@ -35,4 +32,4 @@ const News = ({ items, fetchNews }) => {
   </div>
 };
 
-export default connect(({ news }) => news, newsActions)(News)
+export default withHocs(News)

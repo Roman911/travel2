@@ -1,7 +1,12 @@
-import express from  'express';
-import mongoose from 'mongoose';
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const mongoose = require('mongoose');
 import bodyParser from  'body-parser';
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
+const cors = require('cors');
+
+const schema = require('./schema/Post');
+// const schemaUser = require('./schema/User');
 
 // import { ArticleController } from "./controllers";
 
@@ -9,6 +14,13 @@ import { updateLastSeen } from './middlewares';
 
 const app = express();
 dotenv.config();
+
+app.use(cors());
+
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true,
+}));
 
 app.use(bodyParser.json());
 app.use(updateLastSeen);

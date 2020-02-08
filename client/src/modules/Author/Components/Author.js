@@ -8,7 +8,7 @@ import { Avatar, Date } from "../../../Components/index";
 import baseStyles from "../../../styles/index";
 import styles from "./authorStyles";
 
-export const AuthorPost = ({ isArticle, name, avatar, createdAt }) => {
+export const AuthorPost = ({ isArticle, name, avatar, date }) => {
 
   return <div className={css(baseStyles.flexSB, baseStyles.block)}>
     <div className={css(baseStyles.flex)}>
@@ -24,7 +24,7 @@ export const AuthorPost = ({ isArticle, name, avatar, createdAt }) => {
           }
         </div>
         { isArticle ? <div className={ css(styles.separator) } /> : '' }
-        <Date date={ createdAt } format='LL'/>
+        <Date date={ date } format='LL'/>
       </div>
     </div>
     <FontAwesomeIcon className={css(baseStyles.icon)} icon={faCloudsmith}/>

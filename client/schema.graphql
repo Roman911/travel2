@@ -1,0 +1,48 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+}
+
+type Post {
+  confirm_hash: String
+  confirmed: Boolean
+  coordinateX: String
+  coordinateY: String
+  cover: String
+  id: ID
+  idAuthor: ID
+  last_seen: Date
+  link: String
+  name: String
+  photo: String
+  price: String
+  small_text: String
+  text: String
+  title: String
+  type_material: String
+  user: User
+  views: Int
+}
+
+type Query {
+  post(id: ID): Post
+  posts: [Post]
+  user(id: ID): User
+}
+
+type User {
+  avatar: String
+  confirm_hash: String
+  confirmed: Boolean
+  email: String
+  idAuthor: ID
+  lastName: String
+  last_seen: Date
+  name: String
+  password: String
+}
+
+
+"A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
+scalar Date

@@ -1,0 +1,13 @@
+query Post {
+  posts {
+    id
+    title
+  }
+}
+
+query Post {
+  post {
+    id
+    title
+  }
+}

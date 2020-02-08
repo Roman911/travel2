@@ -22,8 +22,6 @@ const Posts = () => {
     getLink()
   }, [getLink]);
 
-  console.log(post);
-
   return post ?
     <Post
       idAuthor={ post.idAuthor }

@@ -1,8 +1,8 @@
 import { withFormik } from "formik";
-import RegisterForm from '../Components';
-import validateForm from "../../../utils/validate";
 
-const axios = require('axios').default;
+import withHocs from './RegisterFormHoc';
+import validateForm from "../../../utils/validate";
+import RegisterForm from '../Components';
 
 const RegisterFormContainer = withFormik({
   mapPropsToValues: () => ({ name: '', email: '', password: '' }),
@@ -14,15 +14,23 @@ const RegisterFormContainer = withFormik({
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting }) => {
-    axios({
-      method: 'post',
-      url: '/auth/register',
-      data: values
-    });
-    setSubmitting(false)
+  handleSubmit: (values, { props, setSubmitting }) => {
+
+    const { addUser } = props;
+
+    addUser({
+      name: values.name,
+      email: values.email,
+      password: values.password
+    })
+      .then(() => {
+        setSubmitting(false)
+      })
+      .catch(() => {
+        setSubmitting(false)
+      })
   },
   displayName: 'RegisterForm'
 })(RegisterForm);
 
-export default RegisterFormContainer
+export default withHocs(RegisterFormContainer)

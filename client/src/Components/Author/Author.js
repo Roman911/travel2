@@ -4,11 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudsmith } from "@fortawesome/free-brands-svg-icons";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
-import { Avatar, Date } from "../../../Components/index";
-import baseStyles from "../../../styles/index";
+import { Avatar, Date } from "./../index";
+import baseStyles from "../../styles/";
 import styles from "./authorStyles";
 
-export const AuthorPost = ({ isArticle, name, avatar, date }) => {
+export const AuthorPost = ({ isArticle, user, date }) => {
+
+  const { avatar, name } = user;
 
   return <div className={css(baseStyles.flexSB, baseStyles.block)}>
     <div className={css(baseStyles.flex)}>

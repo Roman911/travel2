@@ -2,6 +2,12 @@
 
 schema {
   query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  addPost(coordinateX: String, coordinateY: String, cover: String, idAuthor: ID, link: String, photo: String, price: String, small_text: String, text: String, title: String, type_material: String): Post
+  addUser(avatar: String, confirm_hash: String, confirmed: Boolean, email: String, idAuthor: String, lastName: String, last_seen: Date, name: String, password: String): User
 }
 
 type Post {
@@ -10,9 +16,9 @@ type Post {
   coordinateX: String
   coordinateY: String
   cover: String
+  createdAt: Date
   id: ID
   idAuthor: ID
-  last_seen: Date
   link: String
   name: String
   photo: String

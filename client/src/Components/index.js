@@ -4,7 +4,7 @@ export { Avatar } from './Avatar/Avatar';
 export { SectionTitle } from './SectionTitle/SectionTitle';
 
 export { Home } from './Home/Home';
-export { New } from './New/New';
+export { AuthorPost } from './Author/Author';
 
 export { Date } from './Date/index';
 

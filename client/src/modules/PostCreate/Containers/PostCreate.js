@@ -1,9 +1,9 @@
 import  { withFormik } from "formik";
-import { PostCreateForm } from '../Components/PostCreateForm';
-import validateForm from "../../../utils/validate";
 
-import store from '../../../redax/store';
-import { postActions } from "../../../redax/actions";
+import withHocs from './PostFormHoc';
+import store from "../../../redax/store";
+import validateForm from "../../../utils/validate";
+import { PostCreateForm } from '../Components/PostCreateForm';
 
 const PostCreateFormContainer = withFormik({
 
@@ -18,27 +18,26 @@ const PostCreateFormContainer = withFormik({
     return errors;
   },
 
-  handleSubmit: (values, { setSubmitting, setStatus }) => {
+  handleSubmit: (values, { props, setSubmitting, setStatus }) => {
 
-    const tags = values.tag.split(', ');
-    const coordinates = [values.coordinateY, values.coordinateX];
+    const { addPost } = props;
 
-    const postData = {
+    addPost({
       idAuthor: store.getState().user.data.userId,
       type_material: values.type_material,
       title: values.title,
       cover: values.image_loader,
       link: values.link,
-      tags,
+      tags: values.tag,
       price: values.price,
       small_text: values.small_text,
-      coordinates,
+      coordinateY: values.coordinateY,
+      coordinateX: values.coordinateX,
       text: values.text
-    };
-    store.dispatch(postActions.fetchPost(postData))
+    })
       .then(() => {
-        setSubmitting(false)
-      })
+      setSubmitting(false)
+    })
       .catch(error => {
         setStatus(error.response.data.message);
         setSubmitting(false)
@@ -47,4 +46,4 @@ const PostCreateFormContainer = withFormik({
   displayName: 'PostCreateForm'
 })(PostCreateForm);
 
-export default PostCreateFormContainer
+export default withHocs(PostCreateFormContainer)

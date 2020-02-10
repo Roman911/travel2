@@ -6,9 +6,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 const schema = require('./schema/Post');
-// const schemaUser = require('./schema/User');
-
-// import { ArticleController } from "./controllers";
 
 import { updateLastSeen } from './middlewares';
 
@@ -26,10 +23,6 @@ app.use(bodyParser.json());
 app.use(updateLastSeen);
 
 app.use('/auth', require('./routes/auth.routes'));
-app.use('/post', require('./routes/post.routes'));
-app.use('/user', require('./routes/author.routes'));
-
-// const ArticleCtrl = new ArticleController();
 
 const PORT = process.env.PORT || 5000;
 
@@ -41,10 +34,6 @@ async function start() {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
-
-    // app.get("/article/:id", ArticleCtrl.show);
-    // app.get("/article", ArticleCtrl.index);
-    // app.post("/article", ArticleCtrl.create);
 
     app.listen(PORT, function () {
       console.log(`Server: http://localhost:${PORT}`);

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const reducers = ['news', 'user', 'post', 'author'];
+const reducers = ['user'];
 
 export default combineReducers(
   reducers.reduce((initial, name) => {

@@ -5,24 +5,25 @@ import bodyParser from  'body-parser';
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const schema = require('./schema/Post');
+const graphQlSchema = require('./graphql/schema/index');
+const graphQlResolvers = require('./graphql/resolvers/index');
 
-import { updateLastSeen } from './middlewares';
+const isAuth = require('./middlewares/is-auth');
 
 const app = express();
 dotenv.config();
 
 app.use(cors());
 
+app.use(isAuth);
+
 app.use('/graphql', graphqlHTTP({
-  schema,
+  schema: graphQlSchema,
+  rootValue: graphQlResolvers,
   graphiql: true,
 }));
 
 app.use(bodyParser.json());
-app.use(updateLastSeen);
-
-app.use('/auth', require('./routes/auth.routes'));
 
 const PORT = process.env.PORT || 5000;
 

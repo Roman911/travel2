@@ -9,7 +9,7 @@ const PostCreateFormContainer = withFormik({
 
   enableReinitialize: true,
 
-  mapPropsToValues: () => ({type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '', text: ''}),
+  mapPropsToValues: () => ({type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '', text: '', adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: ''}),
   validate: values => {
     let errors = {};
 
@@ -20,26 +20,28 @@ const PostCreateFormContainer = withFormik({
 
   handleSubmit: (values, { props, setSubmitting, setStatus }) => {
 
-    const { addPost } = props;
-
-    addPost({
-      idAuthor: store.getState().user.data.userId,
-      type_material: values.type_material,
-      title: values.title,
-      cover: values.image_loader,
-      link: values.link,
-      tags: values.tag,
-      price: values.price,
-      small_text: values.small_text,
-      coordinateY: values.coordinateY,
-      coordinateX: values.coordinateX,
-      text: values.text
+    const { createPost } = props;
+    const tags = values.tag.split(' ');
+    const coordinates = [ values.coordinateY, values.coordinateX ];
+    const tickets = [ values.adultTicket, values.childTicket, values.studentTicket, values.pensionTicket ];
+    
+    createPost({
+      postInput: {
+        idAuthor: store.getState().user.data.userId,
+        type_material: values.type_material,
+        title: values.title,
+        link: values.link,
+        tags: tags,
+        tickets: tickets,
+        small_text: values.small_text,
+        coordinates: coordinates,
+        text: values.text
+      }
     })
       .then(() => {
       setSubmitting(false)
     })
-      .catch(error => {
-        setStatus(error.response.data.message);
+      .catch( () => {
         setSubmitting(false)
       })
   },

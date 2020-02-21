@@ -6,13 +6,13 @@ export interface IPost extends Document {
   idAuthor: string,
   type_material: string,
   title: string,
-  cover: string,
+  coverNews: string,
+  coverPost: string,
   link: string,
   tags: object,
-  price: string,
+  tickets: object,
   small_text: string,
-  coordinateY: string,
-  coordinateX: string,
+  coordinates: object,
   photo: string,
   text: string,
   views: number,
@@ -25,13 +25,13 @@ const PostSchema = new Schema({
   idAuthor: String,
   type_material: String,
   title: String,
-  cover: String,
+  coverNews: String,
+  coverPost: String,
   link: String,
   tags: Array,
-  price: String,
+  tickets: Array,
   small_text: String,
-  coordinateY: String,
-  coordinateX: String,
+  coordinates: Array,
   photo: String,
   text: String,
   views: Number,
@@ -45,6 +45,4 @@ const PostSchema = new Schema({
   timestamps: true
 });
 
-const PostModel = mongoose.model<IPost>('Post', PostSchema);
-
-export default PostModel
+module.exports = mongoose.model<IPost>('Post', PostSchema);

@@ -7,6 +7,7 @@ import styles from "./AvatarStyles";
 export const Avatar = ({ avatar, name }) => {
 
   const avatarBG = () => {
+
     if (avatar) {
       const background = avatar !== 'undefined' ? { background: `url(${ avatar })`,backgroundSize: 'cover' } : { background: '#4196e0' };
       const letter = avatar === 'undefined' ? name[0].toUpperCase() : '' ;

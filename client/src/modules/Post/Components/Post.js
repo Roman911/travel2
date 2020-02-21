@@ -6,12 +6,12 @@ import styles from './postStyles';
 
 import {InfoBar, ArticleStats, AddedComment, SectionTitle, AuthorPost} from "../../../Components";
 
-export const Post = ({title, small_text, text, cover, views, user, date}) => {
+export const Post = ({title, small_text, text, cover, views, author, date}) => {
   return <section className={css(baseStyles.wrapper)}>
     <SectionTitle title="Стаття"/>
     <div className={css(baseStyles.flexVFS, styles.wrapperL)}>
       <div className={css(styles.wrapper, baseStyles.boxShadow)}>
-        <AuthorPost isArticle={true} user={user} data={date}/>
+        <AuthorPost isArticle={true} author={author} data={date}/>
         <h2 className={css(styles.title)}>{title}</h2>
         <p className={css(styles.text)}>{small_text}</p>
         <img className={css(styles.img)} src={cover} alt=""/>

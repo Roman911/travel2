@@ -1,54 +1,95 @@
 # This file was generated based on ".graphqlconfig". Do not edit manually.
 
 schema {
-  query: Query
-  mutation: Mutation
+  query: RootQuery
+  mutation: RootMutation
 }
 
-type Mutation {
-  addPost(coordinateX: String, coordinateY: String, cover: String, idAuthor: ID, link: String, photo: String, price: String, small_text: String, text: String, title: String, type_material: String): Post
-  addUser(avatar: String, confirm_hash: String, confirmed: Boolean, email: String, idAuthor: String, lastName: String, last_seen: Date, name: String, password: String): User
+type AuthData {
+  avatar: String
+  name: String
+  token: String!
+  tokenExpiration: Int!
+  userId: ID!
+}
+
+type Author {
+  _id: ID!
+  avatar: String
+  name: String
+}
+
+type Event {
+  _id: ID!
+  creator: User!
+  date: String!
+  description: String!
+  price: Float!
+  title: String!
 }
 
 type Post {
-  confirm_hash: String
-  confirmed: Boolean
-  coordinateX: String
-  coordinateY: String
-  cover: String
-  createdAt: Date
-  id: ID
-  idAuthor: ID
+  _id: ID!
+  author: Author!
+  coordinates: [String]
+  coverNews: String
+  coverPost: String
+  createdAt: String
   link: String
-  name: String
-  photo: String
   price: String
   small_text: String
+  tags: [String]
   text: String
   title: String
   type_material: String
-  user: User
   views: Int
 }
 
-type Query {
-  post(id: ID): Post
-  posts: [Post]
-  user(id: ID): User
+type RootMutation {
+  cancelPost(postId: ID!): Event!
+  createEvent(eventInput: EventInput): Event
+  createPost(postInput: PostInput): Post
+  createUser(userInput: UserInput): User
+  postEvent(eventId: ID!): Post!
+}
+
+type RootQuery {
+  events: [Event!]!
+  login(email: String!, password: String!): AuthData!
+  post(_id: ID!): Post!
+  posts: [Post!]!
 }
 
 type User {
-  avatar: String
-  confirm_hash: String
-  confirmed: Boolean
-  email: String
-  idAuthor: ID
-  lastName: String
-  last_seen: Date
-  name: String
+  _id: ID!
+  email: String!
   password: String
 }
 
+input EventInput {
+  date: String!
+  description: String!
+  price: Float!
+  title: String!
+}
 
-"A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."
-scalar Date
+input PostInput {
+  coordinates: [String]
+  coverNews: String
+  coverPost: String
+  idAuthor: ID
+  link: String
+  photo: String
+  price: String
+  small_text: String
+  tags: [String]
+  text: String
+  title: String
+  type_material: String
+}
+
+input UserInput {
+  email: String!
+  name: String!
+  password: String!
+}

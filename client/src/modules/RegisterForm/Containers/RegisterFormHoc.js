@@ -6,8 +6,8 @@ import { addUserMutation } from './mutations';
 const withGraphQL = compose(
   graphql(addUserMutation, {
     props: ({ mutate }) => ({
-      addUser: user => mutate({
-        variables: user,
+      createUser: data => mutate({
+        variables: data,
       }),
     }),
   }),

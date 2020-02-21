@@ -1,15 +1,15 @@
 import { gql } from 'apollo-boost';
 
 export const postsQuery = gql`
-  query Posts {
+  query posts {
     posts {
-      id
+      _id
       title
       createdAt
       small_text
-      cover
+      coverNews
       views
-      user {
+      author {
         name
         avatar
       }

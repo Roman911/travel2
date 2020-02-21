@@ -1,10 +1,10 @@
 import {withFormik} from "formik";
 import {LoginForm} from '../Components/Login';
+
+import withHocs from './LoginFormHoc';
 import validateForm from "../../../utils/validate";
-
-import {userActions} from "../../../redax/actions";
-
-import store from '../../../redax/store';
+import { userActions } from "../../../redax/actions";
+import store from '../../../redax/store'
 
 const LoginFormContainer = withFormik({
 
@@ -18,21 +18,30 @@ const LoginFormContainer = withFormik({
 
     return errors;
   },
-  handleSubmit: (values, {setSubmitting, setStatus}) => {
+  handleSubmit: (values, {props, setSubmitting, setStatus}) => {
 
-    store.dispatch(userActions.fetchUserLogin(values))
-      .then(() => {
-        setSubmitting(false);
-      })
-      .catch(error => {
-        setStatus(error.response.data.message);
-        setTimeout(() => {
-          setStatus(null)
-        }, 1000);
-        setSubmitting(false)
-      });
+    const email = values.email;
+    const password = values.password;
+
+    const { data } = props;
+
+    data.fetchMore({
+      variables: { email, password },
+      updateQuery: (previousResult, { fetchMoreResult }) => fetchMoreResult,
+    }).then(({ data }) => {
+      setSubmitting(false);
+      const { login } = data;
+      store.dispatch(userActions.setData(login));
+      localStorage.setItem('userData', JSON.stringify({
+        userId: login.userId, token: login.token, name: login.name, avatar: login.avatar
+      }));
+    }).catch(err => {
+      setSubmitting(false);
+      console.log(err.message)
+    });
+
   },
   displayName: 'LoginForm'
 })(LoginForm);
 
-export default LoginFormContainer;
+export default withHocs(LoginFormContainer);

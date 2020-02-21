@@ -12,6 +12,7 @@ export interface IUser extends Document{
   confirmed: boolean,
   confirm_hash: string,
   last_seen: Date,
+  createdEvents: any,
 }
 
 const UserSchema = new Schema({
@@ -35,10 +36,14 @@ const UserSchema = new Schema({
     type: Date,
     default: new Date
   },
+  createdEvents: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Event'
+    }
+  ]
 }, {
   timestamps: true
 });
 
-const UserModel = mongoose.model<IUser>('User', UserSchema);
-
-export default UserModel
+module.exports = mongoose.model<IUser>('User', UserSchema);

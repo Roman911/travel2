@@ -9,14 +9,14 @@ import styles from './newsStyles';
 
 import { ArticleStats, AuthorPost } from "../../../Components";
 
-export const New = ({ id, title, small_text,  date, cover, views, user }) => {
+export const New = ({ id, title, small_text,  date, cover, views, author }) => {
   return <div className={ css(styles.wrapper) }>
     <div className={ css(styles.content) }>
       <Link to={`/post/${ id }`}>
         <img className={ css(styles.img) } src={ cover } alt=""/>
       </Link>
       <div className={ css(styles.block) }>
-        <AuthorPost isArticle={ false } user={user} data={ date } />
+        <AuthorPost isArticle={ false } author={author} data={ date } />
         <Link to={`/post/${ id }`} >
         <div className={ css(baseStyles.block) }>
           <h3>{ title }</h3>

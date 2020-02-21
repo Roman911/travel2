@@ -8,8 +8,8 @@ import {Loading} from "../../../Components/Loading/Loading";
 
 const Posts = () => {
 
-  const id = useParams().id;
-  return <Query query={ postQuery } variables={ {id} }>
+  const _id = useParams().id;
+  return <Query query={ postQuery } variables={ {_id} }>
     {({ loading, error, data }) => {
       if (loading) return <Loading />;
       if (error) return `Error! ${error}`;
@@ -17,14 +17,13 @@ const Posts = () => {
       const { post } = data;
       
       return <Post
-        idAuthor={ post.id }
         title={ post.title }
         date={ post.createdAt }
         small_text={ post.small_text }
         text={ post.text }
-        cover={ post.cover }
+        cover={ post.coverPost }
         views={ post.views }
-        user={ post.user }
+        author={ post.author }
       />
     }}
   </Query>

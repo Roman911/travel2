@@ -13,10 +13,5 @@ export const items = [
     title: 'Теги:',
     type: 'text',
     id: 'tag'
-  },
-  {
-    title: 'Вартість:',
-    type: 'text',
-    id: 'price'
   }
 ];

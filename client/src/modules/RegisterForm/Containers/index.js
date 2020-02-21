@@ -16,12 +16,14 @@ const RegisterFormContainer = withFormik({
 
   handleSubmit: (values, { props, setSubmitting }) => {
 
-    const { addUser } = props;
+    const { createUser } = props;
 
-    addUser({
-      name: values.name,
-      email: values.email,
-      password: values.password
+    createUser({
+      userInput: {
+        name: values.name,
+        email: values.email,
+        password: values.password
+      }
     })
       .then(() => {
         setSubmitting(false)

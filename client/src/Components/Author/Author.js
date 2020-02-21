@@ -8,9 +8,9 @@ import { Avatar, Date } from "./../index";
 import baseStyles from "../../styles/";
 import styles from "./authorStyles";
 
-export const AuthorPost = ({ isArticle, user, date }) => {
+export const AuthorPost = ({ isArticle, author, date }) => {
 
-  const { avatar, name } = user;
+  const { avatar, name } = author;
 
   return <div className={css(baseStyles.flexSB, baseStyles.block)}>
     <div className={css(baseStyles.flex)}>

@@ -20,14 +20,14 @@ const News = () => {
             posts.map((item, index) => {
               return <New
                 key={ index }
-                id={item.id}
+                id={item._id}
                 title={item.title}
                 idAuthor={item.idAuthor}
                 date={item.createdAt}
                 small_text={item.small_text}
-                cover={item.cover}
+                cover={item.coverNews}
                 views={ item.views }
-                user={ item.user }
+                author={ item.author }
               />
           })
           }

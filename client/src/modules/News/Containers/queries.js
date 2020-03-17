@@ -9,6 +9,7 @@ export const postsQuery = gql`
       small_text
       coverNews
       views
+      likes
       author {
         name
         avatar

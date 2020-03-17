@@ -15,6 +15,7 @@ type Post {
     coordinates: [String]
     text: String
     views: Int
+    likes: [String]
     createdAt: String
 }
 
@@ -86,6 +87,8 @@ type RootMutation {
     createPost(postInput: PostInput): Post
     postEvent(eventId: ID!): Post!
     cancelPost(postId: ID!): Event!
+    addLike(postId: ID!, userId: ID!): Post
+    removeLike(postId: ID!, userId: ID!): Post
 }
 
 schema {

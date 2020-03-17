@@ -6,6 +6,7 @@ export const heightIconXL = 20;
 
 export const colorIcons = '#707070';
 export const colorShadow = '#d6d6d6';
+export const colorShadowDark = '#a0a0a0';
 export const colorErrors = '#ff2100';
 export const colorIsOk = '#61c144';
 export const colorBtn = '#cb2c3b';

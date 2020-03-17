@@ -16,6 +16,7 @@ export interface IPost extends Document {
   photo: string,
   text: string,
   views: number,
+  likes: object,
   confirmed: boolean,
   confirm_hash: string,
   last_seen: Date,
@@ -35,6 +36,7 @@ const PostSchema = new Schema({
   photo: String,
   text: String,
   views: Number,
+  likes: Array,
   confirmed: Boolean,
   confirm_hash: String,
   last_seen: {

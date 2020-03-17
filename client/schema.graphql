@@ -35,22 +35,25 @@ type Post {
   coverNews: String
   coverPost: String
   createdAt: String
+  likes: [String]
   link: String
-  price: String
   small_text: String
   tags: [String]
   text: String
+  tickets: [String]
   title: String
   type_material: String
   views: Int
 }
 
 type RootMutation {
+  addLike(postId: ID!, userId: ID!): Post
   cancelPost(postId: ID!): Event!
   createEvent(eventInput: EventInput): Event
   createPost(postInput: PostInput): Post
   createUser(userInput: UserInput): User
   postEvent(eventId: ID!): Post!
+  removeLike(postId: ID!, userId: ID!): Post
 }
 
 type RootQuery {
@@ -75,15 +78,13 @@ input EventInput {
 
 input PostInput {
   coordinates: [String]
-  coverNews: String
-  coverPost: String
   idAuthor: ID
   link: String
   photo: String
-  price: String
   small_text: String
   tags: [String]
   text: String
+  tickets: [String]
   title: String
   type_material: String
 }

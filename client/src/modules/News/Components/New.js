@@ -8,8 +8,10 @@ import baseStyles from '../../../styles/index';
 import styles from './newsStyles';
 
 import { ArticleStats, AuthorPost } from "../../../Components";
+import { Likes } from '../../';
 
-export const New = ({ id, title, small_text,  date, cover, views, author }) => {
+export const New = ({ id, title, small_text,  date, cover, views, likes, author }) => {
+
   return <div className={ css(styles.wrapper) }>
     <div className={ css(styles.content) }>
       <Link to={`/post/${ id }`}>
@@ -26,7 +28,10 @@ export const New = ({ id, title, small_text,  date, cover, views, author }) => {
       </div>
     </div>
     <div className={ css(styles.block) }>
-      <ArticleStats isArticle={ false } views={ views } />
+      <div className={css(baseStyles.flexSB, baseStyles.block, baseStyles.bottom)}>
+        <ArticleStats isArticle={ false } views={ views } />
+        <Likes likes={likes} id={id} />
+      </div>
     </div>
   </div>
 };

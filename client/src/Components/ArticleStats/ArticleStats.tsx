@@ -13,23 +13,19 @@ interface ArticleStatsProps {
 }
 
 export const ArticleStats:React.FC<ArticleStatsProps> = ({ isArticle, views }) => {
-  return <div className={css(baseStyles.flexSB, baseStyles.block, styles.bottom)}>
-    <div className={css(baseStyles.flex)}>
+  return <div className={css(baseStyles.flex)}>
       <span className={css(baseStyles.views)}>
-
         { views === 0 ? '' : views ===1 ? `${ views } перегляд` : views === 2 ? `${ views } перегляди` : `${ views } переглядів` }
         <FontAwesomeIcon className={css(baseStyles.iconS)} icon={faEye}/>
       </span>
-      { !isArticle
-        ?
-        <span className={css(baseStyles.comment)}>
+    { !isArticle
+      ?
+      <span className={css(baseStyles.comment)}>
           Write a comment
           <FontAwesomeIcon className={css(baseStyles.iconS)} icon={faCommentAlt}/>
         </span>
-        :
-        ''
-      }
-    </div>
-    <FontAwesomeIcon className={css(baseStyles.icon)} icon={faHeart}/>
+      :
+      ''
+    }
   </div>
 };

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import { css } from 'aphrodite/no-important';
 
-import { FormItem } from "../../../Components";
+import {FormItem, InformWindow} from "../../../Components";
 import loginStyles from '../../../styles/loginStyles';
 
 const RegisterForm = props => {
@@ -13,7 +13,34 @@ const RegisterForm = props => {
     handleChange,
     handleBlur,
     handleSubmit,
+    status
   } = props;
+
+  const [ modalError, setModalError ] = useState(false);
+  const [ closedModal, setClosedModal ] = useState( false );
+  const [ error, setError ] = useState( undefined );
+
+  useEffect(({ status }) => {
+    if (status) {
+      setError(status);
+      setModalError(true);
+      setTimeout(() => {
+        setClosedModal(true);
+        setTimeout(() => {
+          setModalError( false );
+          setClosedModal( false )
+        }, 1000)
+      }, 3000)
+    }
+  }, [status]);
+
+  const handleChangeModal = () => {
+    setClosedModal( true );
+    setTimeout(() => {
+      setModalError( false );
+      setClosedModal( false )
+    }, 1000)
+  };
 
   return <section className={css(loginStyles.wrapper)}>
     <Link to="/">
@@ -33,6 +60,7 @@ const RegisterForm = props => {
       <span className={css(loginStyles.text)}>Already have an account? </span><Link to="/login"><span
       className={css(loginStyles.link)}>Sign in to Travel.</span></Link>
     </div>
+    { modalError ? <InformWindow id={'modal'} children={ error } handleChangeModal={ handleChangeModal } closedModal={ closedModal } /> : '' }
   </section>
 };
 

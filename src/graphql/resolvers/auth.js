@@ -8,7 +8,7 @@ module.exports = {
     try {
       const existingUser = await User.findOne({ email: args.userInput.email });
       if (existingUser) {
-        throw new Error('User exists already.');
+        return new Error('Даний емейл зайнятий');
       }
       const hashedPassword = await bcrypt.hash(args.userInput.password, 12);
 
@@ -29,11 +29,11 @@ module.exports = {
   login: async ({ email, password }) => {
     const user = await User.findOne({ email: email });
     if (!user) {
-      throw new Error('User does not exist!');
+      throw new Error('Неправильний логін або пароль!');
     }
     const isEqual = await bcrypt.compare(password, user.password);
     if (!isEqual) {
-      throw new Error('Password is incorrect!');
+      throw new Error('Неправильний логін або пароль!');
     }
     const token = jwt.sign(
       { userId: user.id, email: user.email },

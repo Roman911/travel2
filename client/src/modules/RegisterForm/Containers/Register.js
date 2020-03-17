@@ -2,7 +2,7 @@ import { withFormik } from "formik";
 
 import withHocs from './RegisterFormHoc';
 import validateForm from "../../../utils/validate";
-import RegisterForm from '../Components';
+import RegisterForm from '../Components/RegisterForm';
 
 const RegisterFormContainer = withFormik({
   mapPropsToValues: () => ({ name: '', email: '', password: '' }),
@@ -14,7 +14,7 @@ const RegisterFormContainer = withFormik({
     return errors;
   },
 
-  handleSubmit: (values, { props, setSubmitting }) => {
+  handleSubmit: (values, { props, setSubmitting, setStatus }) => {
 
     const { createUser } = props;
 
@@ -28,7 +28,13 @@ const RegisterFormContainer = withFormik({
       .then(() => {
         setSubmitting(false)
       })
-      .catch(() => {
+      .catch((error) => {
+        error.graphQLErrors.map(({ message }) => {
+          setStatus(message);
+          setTimeout(() => {
+            setStatus(undefined)
+          }, 1000)
+        });
         setSubmitting(false)
       })
   },

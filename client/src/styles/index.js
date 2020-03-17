@@ -54,5 +54,8 @@ export default StyleSheet.create({
     borderRadius: '50%',
     width: 40,
     height: 40
+  },
+  bottom: {
+    borderTop: '1px solid #cccccc'
   }
 })

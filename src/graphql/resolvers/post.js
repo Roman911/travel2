@@ -1,6 +1,5 @@
-const Event = require('../../models/events');
 const Post = require('../../models/Post');
-const { transformPost, transformEvent } = require('./merge');
+const { transformPost } = require('./merge');
 
 module.exports = {
   posts: async (args, req) => {
@@ -16,6 +15,10 @@ module.exports = {
   post: async (args) => {
     try {
       const post = await Post.findById(args._id);
+      if (post) {
+        post.views++;
+        await post.save()
+      }
       return transformPost(post)
     } catch (err) {
       throw err
@@ -36,33 +39,34 @@ module.exports = {
       coordinates: postInput.coordinates,
       photo: postInput.phone,
       text: postInput.text,
-      views: 0
+      views: 0,
+      likes: []
     });
     return await post.save()
   },
-  postEvent: async (args, req) => {
-    if (!req.isAuth) {
-      throw new Error('Unauthenticated!');
-    }
-    const fetchedEvent = await Event.findOne({ _id: args.eventId });
-    const booking = new Booking({
-      user: req.userId,
-      event: fetchedEvent
-    });
-    const result = await booking.save();
-    return transformBooking(result);
-  },
-  cancelPost: async (args, req) => {
-    if (!req.isAuth) {
-      throw new Error('Unauthenticated!');
-    }
+  addLike: async (args) => {
     try {
-      const booking = await Booking.findById(args.bookingId).populate('event');
-      const event = transformEvent(booking.event);
-      await Booking.deleteOne({ _id: args.bookingId });
-      return event;
+      const post = await Post.findById(args.postId);
+      const { likes } = post;
+      if (post) {
+        likes.push(args.userId);
+        await post.save()
+      }
+      return post
     } catch (err) {
-      throw err;
+      throw err
+    }
+  },
+  removeLike: async (args) => {
+    try {
+      const post = await Post.findById(args.postId);
+      const { likes } = post;
+      if (post) {
+        likes.pop(args.userId);
+        await post.save()
+      }
+    } catch (err) {
+      throw err
     }
   }
 };

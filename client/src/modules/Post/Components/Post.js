@@ -5,8 +5,9 @@ import baseStyles from '../../../styles';
 import styles from './postStyles';
 
 import {InfoBar, ArticleStats, AddedComment, SectionTitle, AuthorPost} from "../../../Components";
+import { Likes } from '../../';
 
-export const Post = ({title, small_text, text, cover, views, author, date}) => {
+export const Post = ({ id, title, small_text, text, cover, views, likes, author, date }) => {
   return <section className={css(baseStyles.wrapper)}>
     <SectionTitle title="Стаття"/>
     <div className={css(baseStyles.flexVFS, styles.wrapperL)}>
@@ -16,7 +17,10 @@ export const Post = ({title, small_text, text, cover, views, author, date}) => {
         <p className={css(styles.text)}>{small_text}</p>
         <img className={css(styles.img)} src={cover} alt=""/>
         <p className={css(styles.text)}>{text}</p>
-        <ArticleStats isArticle={true} views={views}/>
+        <div className={css(baseStyles.flexSB, baseStyles.block, baseStyles.bottom)}>
+          <ArticleStats isArticle={true} views={views}/>
+          <Likes id={id} likes={likes} post={ true } />
+        </div>
         <h3>Comments:</h3>
         <AddedComment/>
       </div>

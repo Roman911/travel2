@@ -6,11 +6,12 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { NavBar, Home, Maps, About,  } from './Components';
+import {NavBar, Home, Maps, About, InformWindow,} from './Components';
 import { UseRegisterForm, UseLoginForm, PostCreateFormContainer, Posts } from "./modules";
 import { UseAuth } from "./hooks/auth.hook";
+import { modalActions } from './redax/actions/';
 
-const App = ({ data }) => {
+const App = ({ data, registerData, text, timeout, handleClick }) => {
   UseAuth();
 
   let token;
@@ -30,12 +31,15 @@ const App = ({ data }) => {
           <Route path="/login" >
             { token ? <Redirect to="/" /> : <UseLoginForm /> }
           </Route>
-          <Route component={ UseRegisterForm } path="/register" />
+          <Route path='/register'>
+            { registerData ? <Redirect to='/login' /> : <UseRegisterForm />  }
+          </Route>
           <Route component={ PostCreateFormContainer } path="/post-create" />
         </Switch>
+        { text && <InformWindow id={'modal'} children={ text } closedModal={ timeout } handleClick={ handleClick } /> }
       </div>
     </Router>
   );
 };
 
-export default connect(({user}) => user)(App);
+export default connect(({ user, modal }) => ({ data: user.data, registerData: user.registerData, text: modal.text, timeout: modal.timeout }), { ...modalActions })(App);

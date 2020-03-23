@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from 'formik';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { useLazyQuery } from '@apollo/react-hooks';
 import { css } from "aphrodite/no-important";
@@ -7,12 +8,11 @@ import { LoginForm } from "../Components/LoginForm";
 import loginStyles from "../../../styles/loginStyles";
 import { loginQuery } from './queries';
 import { Loading } from '../../../Components/Loading/Loading';
-import { userActions } from "../../../redax/actions";
-import store from '../../../redax/store';
+import { userActions, modalActions } from "../../../redax/actions/";
 
-const UseLoginForm = () => {
+const UseLoginForm = ({ setData, showModal }) => {
   const [ userData, { loading, data, error } ] = useLazyQuery( loginQuery );
-  const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting } = useFormik({
+  const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting, setSubmitting } = useFormik({
     initialValues: {
       email: '',
       password: '',
@@ -21,17 +21,23 @@ const UseLoginForm = () => {
       userData({
         variables: {email: values.email, password: values.password},
       });
+      setSubmitting(false)
     },
   });
+
   if (loading) return <Loading />;
-  if (error) return `Error! ${error}`;
+  if (error) {
+    showModal('Неправильний логін або пароль');
+  }
   if (data) {
     const { login } = data;
-    store.dispatch(userActions.setData(login));
+    setData(login);
     localStorage.setItem('userData', JSON.stringify({
       userId: login.userId, token: login.token, name: login.name, avatar: login.avatar
     }));
+    showModal('Ви успишно увійшли!');
   }
+
   return <section className={css(loginStyles.wrapper)}>
     <Link to="/">
       <div className={css(loginStyles.logo)}/>
@@ -50,4 +56,4 @@ const UseLoginForm = () => {
   </section>
 };
 
-export default UseLoginForm
+export default connect(null, { ...userActions, ...modalActions })(UseLoginForm)

@@ -1,19 +1,24 @@
 const initialState = {
-  data: null,
-  registerData: null
+  text: null,
+  timeout: null,
 };
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-    case 'USER:SET_DATA':
+    case 'SHOW_MODAL':
       return {
         ...state,
-        data: payload
+        text: payload
       };
-    case 'USER:REGISTER_DATA':
+    case 'HIDE_MODAL':
       return {
         ...state,
-        registerData: payload
+        text: null
+      };
+    case 'HIDE_TIMEOUT':
+      return {
+        ...state,
+        timeout: payload
       };
     default:
       return state;

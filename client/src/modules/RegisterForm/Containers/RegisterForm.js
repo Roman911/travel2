@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { css } from "aphrodite/no-important";
-
 import loginStyles from "../../../styles/loginStyles";
-import { FormItem, InformWindow } from "../../../Components";
+import { FormItem } from "../../../Components";
 import { addUserMutation } from './mutations';
 import validateForm from "../../../utils/validate";
-import { modalError } from '../../../utils/modalError';
+import { userActions, modalActions } from "../../../redax/actions";
 
-const UseRegisterForm = () => {
-  const [createUse] = useMutation(addUserMutation);
-  const [ isModal, setIsModal ] = useState( false );
-  const [ message, setMessage ] = useState( undefined );
-  const [ closedModal, setClosedModal ] = useState( false );
+const UseRegisterForm = ({ registerData, showModal }) => {
+  const [ createUse ] = useMutation(addUserMutation);
   const { handleSubmit, handleChange, values, errors, touched, handleBlur, setSubmitting } = useFormik({
     initialValues: {
       name: '', email: '', password: ''
@@ -29,20 +26,18 @@ const UseRegisterForm = () => {
         variables: {
           userInput: { name: values.name, email: values.email, password: values.password }
         }
-      })
-        .then(data => {
+      }).then(data => {
           if (data) {
-            modalError( setIsModal, setMessage, setClosedModal, 'Користувач успішно створений')
+            registerData(data);
+            showModal( 'Користувач успішно створений! Увійдіть в свій акаунт' )
           }
           setSubmitting(false)
-        })
-        .catch((errors) => {
+        }).catch((errors) => {
           if (errors) {
-            modalError( setIsModal, setMessage, setClosedModal,'Користувач з таким емейлом вже зайнятий')
+            showModal( 'Користувач з таким емейлом зайнятий' )
           }
           setSubmitting(false)
-        })
-    },
+        })},
   });
   
   return <section className={css(loginStyles.wrapper)}>
@@ -63,8 +58,7 @@ const UseRegisterForm = () => {
       <span className={css(loginStyles.text)}>Already have an account? </span><Link to="/login"><span
       className={css(loginStyles.link)}>Sign in to Travel.</span></Link>
     </div>
-    { isModal ? <InformWindow id={'modal'} children={ message } closedModal={ closedModal } button={{ setClosedModal, setIsModal }} /> : '' }
   </section>
 };
 
-export default UseRegisterForm
+export default connect(null, { ...userActions, ...modalActions })(UseRegisterForm)

@@ -10,10 +10,8 @@ import usePortal from "../../hooks/usePortal";
 import baseStyles from '../../styles/';
 import styles from "./InformWindowStyles";
 
-export const InformWindow = ({ id, children, closedModal, button }) => {
-
+export const InformWindow = ({ id, children, closedModal, handleClick }) => {
   const target = usePortal(id);
-
   const cln = closedModal ? css(styles.wrapper, styles.closedModal) : css(styles.wrapper, styles.openModal);
 
   return createPortal(
@@ -25,7 +23,7 @@ export const InformWindow = ({ id, children, closedModal, button }) => {
         </p>
       </div>
       <div className={ css(styles.bottom) } >
-        <Button button={ button } />
+        <Button handleClick={ handleClick } />
       </div>
     </div>,
     target,

@@ -1,17 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { css } from 'aphrodite/no-important';
-
 import { userActions } from "../../redax/actions";
-import store from '../../redax/store';
 import { dropdownMenuItems } from './dropdownMenu.config';
-
 import styles from './dropdownMenuStyle';
 
-const DropdownMenu = ({ data }) => {
+const DropdownMenu = ({ data, setData }) => {
   
   const logout = () => {
-    store.dispatch(userActions.setData(null));
+    setData(null);
     localStorage.removeItem('userData')
   };
 
@@ -31,4 +29,4 @@ const DropdownMenu = ({ data }) => {
   </div>
 };
 
-export default DropdownMenu
+export default connect(null, { ...userActions })(DropdownMenu)

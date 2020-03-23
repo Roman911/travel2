@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import { useMutation } from '@apollo/react-hooks';
 
 import { Like } from '../Components/Like';
 import { addLikeMutation, removeLikeMutation } from './mutations';
 import { postQuery } from '../../Post/Containers/queries';
-import { InformWindow } from "../../../Components";
+import { modalActions } from "../../../redax/actions";
 
-const Likes = ({ id, likes, post, data }) => {
-  const [ modalError, setModalError ] = useState(false);
-  const [ closedModal, setClosedModal ] = useState( false );
-
+const Likes = ({ id, likes, post, data, showModal }) => {
   const quantityLikes = likes.length;
   const userId = data ? data.userId : undefined;
   const userLike = likes.filter((item) => {
@@ -33,14 +30,7 @@ const Likes = ({ id, likes, post, data }) => {
         }]
       }).then(r =>r);
     } else {
-      setModalError(true);
-      setTimeout(() => {
-        setClosedModal(true);
-        setTimeout(() => {
-          setModalError( false );
-          setClosedModal( false )
-        }, 1000)
-      }, 3000)
+      showModal('Для виконання данної дії потрібно авторизоватись')
     }
    };
 
@@ -55,18 +45,9 @@ const Likes = ({ id, likes, post, data }) => {
       .then(r =>r)
   };
 
-  const handleChangeModal = () => {
-    setClosedModal( true );
-    setTimeout(() => {
-      setModalError( false );
-      setClosedModal( false )
-    }, 1000)
-  };
-
   return <>
-    <Like post={ post } quantityLikes={ quantityLikes } userLike={ userLike } handleChangeAdd={ handleChangeAdd } handleChangeRemove={ handleChangeRemove } userId={ userId } />
-    { modalError ? <InformWindow id={'modal'} children={'Для виконання данної дії потрібно авторизоватись'} handleChangeModal={ handleChangeModal } closedModal={ closedModal } /> : '' }
+      <Like post={ post } quantityLikes={ quantityLikes } userLike={ userLike } handleChangeAdd={ handleChangeAdd } handleChangeRemove={ handleChangeRemove } userId={ userId } />
     </>
 };
 
-export default connect(({ user }) => user)(Likes)
+export default connect(({ user }) => user, { ...modalActions })(Likes)

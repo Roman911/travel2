@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faEye, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
+import { faEye, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
 
 import { css } from 'aphrodite/no-important';
 import baseStyles from './../../styles/index';
-import styles from './articleStatsStyles';
 
 interface ArticleStatsProps {
   isArticle:boolean,
@@ -19,13 +18,11 @@ export const ArticleStats:React.FC<ArticleStatsProps> = ({ isArticle, views }) =
         <FontAwesomeIcon className={css(baseStyles.iconS)} icon={faEye}/>
       </span>
     { !isArticle
-      ?
+      &&
       <span className={css(baseStyles.comment)}>
           Write a comment
           <FontAwesomeIcon className={css(baseStyles.iconS)} icon={faCommentAlt}/>
         </span>
-      :
-      ''
     }
   </div>
 };

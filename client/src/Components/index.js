@@ -7,7 +7,6 @@ export { AuthorPost } from './Author/Author';
 export { Date } from './Date/index';
 export { ArticleStats } from './ArticleStats/ArticleStats';
 export { AddedComment } from './AddedComment/index';
-export { Maps } from './GoogleMap/index';
 export { About } from './About/index';
 export { InfoBar } from './InfoBar/index';
 export { FormItem } from './FormItem/FormItem';

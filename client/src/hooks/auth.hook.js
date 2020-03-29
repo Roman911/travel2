@@ -15,5 +15,5 @@ export const UseAuth = () => {
     if (data) {
       dispatch(userActions.setData(data))
     }
-  }, []);
+  }, [dispatch]);
 };

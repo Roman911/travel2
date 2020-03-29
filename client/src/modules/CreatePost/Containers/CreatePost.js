@@ -8,7 +8,7 @@ import { addPostMutation } from "./mutations";
 
 const CreatePostFormContainer = ({ data }) => {
   const [ createPost ] = useMutation(addPostMutation);
-  const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting, setSubmitting, setFieldValue } = useFormik({
+  const { handleSubmit, handleChange, values, touched, handleBlur, isSubmitting, setSubmitting, setFieldValue } = useFormik({
     initialValues: {
       type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '',  adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: '',
       text: ''

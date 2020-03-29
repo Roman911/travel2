@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { colorText, colorBorderInput, colorBtn } from "../../../variabels";
+import { colorBorderInput, colorBtn } from "../../../variabels";
 
 export default StyleSheet.create({
   wrapper: {

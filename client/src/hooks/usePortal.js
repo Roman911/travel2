@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 function createRootElement(id) {
   const rootContainer = document.createElement('div');
@@ -32,7 +32,7 @@ function usePortal(id) {
         parentElem.remove();
       }
     };
-  }, []);
+  }, [id]);
   
   function getRootElem() {
     if (!rootElemRef.current) {

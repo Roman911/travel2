@@ -6,8 +6,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import {NavBar, Home, Maps, About, InformWindow,} from './Components';
-import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts } from "./modules";
+import {NavBar, Home, About, InformWindow,} from './Components';
+import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts, GoogleMaps } from "./modules";
 import { UseAuth } from "./hooks/auth.hook";
 import { modalActions } from './redax/actions/';
 
@@ -25,7 +25,7 @@ const App = ({ data, registerData, text, timeout, handleClick }) => {
         <NavBar/>
         <Switch>
           <Route component={ Home } path="/" exact />
-          <Route component={ Maps } path="/maps" />
+          <Route component={ GoogleMaps } path="/maps" />
           <Route component={ Posts } path='/post/:id' />
           <Route component={ About } path="/about" />
           <Route path="/login" >

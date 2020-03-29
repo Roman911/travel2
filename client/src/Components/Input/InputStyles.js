@@ -1,11 +1,11 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { colorText, colorBorderInput, colorTextInput } from "../../variabels";
+import { colorText, colorBorderInput, colorTextInput, colorIcons } from "../../variabels";
 
 export default StyleSheet.create({
   wrapper: {
     width: '100%',
-    padding: '10px 20px',
+    padding: '6px 0',
     display: 'flex'
   },
   column: {
@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   paragraph: {
     color: colorText,
-    width: '20%',
+    width: 150,
     fontWeight: '600'
   },
   input: {
@@ -24,9 +24,28 @@ export default StyleSheet.create({
     padding: '10px 15px',
     color: colorTextInput,
     fontWeight: '600',
-    width: '100%',
+    width: 'calc(100% - 160px)',
     ':focus': {
       border: '1px solid black'
     }
+  },
+  // Radio
+  inputRadio: {
+    display: 'none'
+  },
+  labelWrapper: {
+    cursor: 'pointer',
+    marginRight: 15
+  },
+  label: {
+    margin: '0 6px',
+    border: `2px solid ${ colorIcons }`,
+    height: 12,
+    width: 12,
+    borderRadius: 12
+  },
+  labelActive: {
+    background: colorIcons,
+    transition: '200ms'
   }
 })

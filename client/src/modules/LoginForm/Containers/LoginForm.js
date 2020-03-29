@@ -50,7 +50,7 @@ const UseLoginForm = ({ setData, showModal }) => {
     <div className={css(loginStyles.wrapperForm, loginStyles.bottomBlock)}>
       <span className={css(loginStyles.text)}>New to Travel? </span>
       <Link to="/register">
-        <span className={css(loginStyles.link)}>Create an account.</span>
+        <span className={css(loginStyles.link)}>Створити акаунт.</span>
       </Link>
     </div>
   </section>

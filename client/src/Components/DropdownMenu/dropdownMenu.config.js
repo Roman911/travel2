@@ -1,7 +1,7 @@
 export const dropdownMenuItems = [
   {
     title: 'Додати статю',
-    route: '/post-create'
+    route: '/create-post'
   },
   {
     title: 'Help',

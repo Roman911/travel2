@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { css } from "aphrodite/no-important";
 import loginStyles from "../../../styles/loginStyles";
-import { FormItem } from "../../../Components";
+import { Button, FormItem } from "../../../Components";
 import { addUserMutation } from './mutations';
 import validateForm from "../../../utils/validate";
 import { userActions, modalActions } from "../../../redax/actions";
 
 const UseRegisterForm = ({ registerData, showModal }) => {
   const [ createUse ] = useMutation(addUserMutation);
-  const { handleSubmit, handleChange, values, errors, touched, handleBlur, setSubmitting } = useFormik({
+  const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting, setSubmitting } = useFormik({
     initialValues: {
       name: '', email: '', password: ''
     },
@@ -51,7 +51,9 @@ const UseRegisterForm = ({ registerData, showModal }) => {
         <FormItem tittle='Email address' id="email" type="text" value={values.email} onChange={handleChange} onBlur={handleBlur} errors={errors.email} touched={touched.email} />
         <FormItem tittle='Password' id="password" type="password" value={values.password} onChange={handleChange} onBlur={handleBlur} errors={errors.password} touched={touched.password} />
         <FormItem tittle='Confirm password' id="password2" type="password" value={values.password2} onChange={handleChange} onBlur={handleBlur} errors={errors.password2} touched={touched.password2} />
-        <button className={css(loginStyles.inputSub)} type="submit" >Sign in</button>
+        <div className={ css(loginStyles.inputSub) }>
+          <Button type="submit" nameBtn='Створити акаунт' disabled={ isSubmitting } />
+        </div>
       </div>
     </form>
     <div className={css(loginStyles.wrapperForm, loginStyles.bottomBlock)}>

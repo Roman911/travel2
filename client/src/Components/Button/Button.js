@@ -3,6 +3,6 @@ import { css } from 'aphrodite/no-important';
 
 import styles from "./ButtonStyles";
 
-export const Button = ({ handleClick }) => {
-  return <button onClick={ () => handleClick() } className={ css(styles.btn) }>Закрити</button>
+export const Button = ({ type, nameBtn, handleClick }) => {
+  return <button type={ type } onClick={ () => handleClick ? handleClick() : void(0) } className={ css(styles.btn) }>{ nameBtn }</button>
 };

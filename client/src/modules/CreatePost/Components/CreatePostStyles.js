@@ -9,6 +9,9 @@ export default StyleSheet.create({
   wrapperBlock: {
     width: 'calc(100% - 360px)'
   },
+  wrapperRadio: {
+    
+  },
   container: {
     width: 350,
     margin: '10px 5px',

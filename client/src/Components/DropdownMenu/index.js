@@ -24,7 +24,7 @@ const DropdownMenu = ({ data, setData }) => {
     <ul className={ css(styles.ul) }>
       <li className={ css(styles.li) }>{ data.name }</li>
       { LiMenu }
-      <li className={ css(styles.li) } onClick={() => logout() }>Sign out</li>
+      <li className={ css(styles.li) } onClick={() => logout() }>Вийти</li>
     </ul>
   </div>
 };

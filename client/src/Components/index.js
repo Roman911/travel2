@@ -15,3 +15,5 @@ export { Loading } from './Loading/Loading';
 export { ShowError } from './ShowError/ShowError';
 export { InformWindow } from './InformWindow/InformWindow';
 export { Button } from './Button/Button';
+export { MiInput } from './Input/Radio';
+export { Input } from './Input/Input';

@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import {NavBar, Home, Maps, About, InformWindow,} from './Components';
-import { UseRegisterForm, UseLoginForm, PostCreateFormContainer, Posts } from "./modules";
+import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts } from "./modules";
 import { UseAuth } from "./hooks/auth.hook";
 import { modalActions } from './redax/actions/';
 
@@ -32,9 +32,9 @@ const App = ({ data, registerData, text, timeout, handleClick }) => {
             { token ? <Redirect to="/" /> : <UseLoginForm /> }
           </Route>
           <Route path='/register'>
-            { registerData ? <Redirect to='/login' /> : <UseRegisterForm />  }
+            { ( registerData || token ) ? <Redirect to='/login' /> : <UseRegisterForm />  }
           </Route>
-          <Route component={ PostCreateFormContainer } path="/post-create" />
+          <Route component={ CreatePostFormContainer } path="/create-post" />
         </Switch>
         { text && <InformWindow id={'modal'} children={ text } closedModal={ timeout } handleClick={ handleClick } /> }
       </div>

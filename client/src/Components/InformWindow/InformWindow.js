@@ -23,7 +23,7 @@ export const InformWindow = ({ id, children, closedModal, handleClick }) => {
         </p>
       </div>
       <div className={ css(styles.bottom) } >
-        <Button handleClick={ handleClick } />
+        <Button handleClick={ handleClick } nameBtn='Закрити' />
       </div>
     </div>,
     target,

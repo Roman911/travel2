@@ -39,14 +39,7 @@ export default StyleSheet.create({
   },
   inputSub: {
     margin: '20px 0',
-    background: '#4196e0',
-    color: '#fff',
-    cursor: 'pointer',
-    padding: 8,
-    transition: '200ms',
-    ':hover': {
-      background: '#4287d2'
-    }
+    textAlign: 'end'
   },
   bottomBlock: {
     marginTop: 15,

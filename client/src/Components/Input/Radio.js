@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "aphrodite/no-important";
 
-import baseStyles from "../../styles/index";
+import baseStyles from "../../styles";
 import styles from "./InputStyles";
 
 export const MiInput = ({ values, handleChange, handleBlur, id, name, type, value, tittle }) => {

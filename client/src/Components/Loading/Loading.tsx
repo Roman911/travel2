@@ -1,10 +1,8 @@
 import React from 'react';
 import { css } from 'aphrodite/no-important';
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCarSide } from "@fortawesome/free-solid-svg-icons";
 import { faPhoenixFramework } from "@fortawesome/free-brands-svg-icons";
-
 import styles from './loadingStyles';
 
 export const Loading:React.FC = () => {

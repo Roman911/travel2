@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Language } from "../index";
 import UseRoutes from '../Routes/Routes'
-import baseStyles from '../../styles/index';
+import baseStyles from '../../styles';
 import styles from './navBarStyles';
 import { baseText } from '../../assets/baseUK';
 
@@ -15,7 +15,6 @@ export const NavBar = () => {
       <Link to={ item.path }>{ item.title }</Link>
     </li>
   });
-
   return <nav className={ css(styles.nav, baseStyles.boxShadow) }>
     <div className={ css(baseStyles.wrapper, baseStyles.flexSB) }>
       <div className={ css(baseStyles.flexSB) }>

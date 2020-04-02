@@ -10,9 +10,7 @@ import { RegisterForm } from "../Components/RegisterForm";
 const UseRegisterForm = ({ registerData, showModal }) => {
   const [ createUse ] = useMutation(addUserMutation);
   const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting, setSubmitting } = useFormik({
-    initialValues: {
-      name: '', email: '', password: ''
-    },
+    initialValues: { name: '', email: '', password: '' },
     validate: values => {
       let errors = {};
       validateForm({ values, errors });

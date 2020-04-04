@@ -6,10 +6,11 @@ import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts } from ".
 import { UseAuth } from "./hooks/auth.hook";
 import { modalActions } from './redax/actions/';
 
-import { userType, modalType } from "./types";
+import { User } from "./types/user";
+import { Modal } from "./types/modal";
 type MyAppProps = {
-  user: userType.User
-  modal: modalType.Modal
+  user: User
+  modal: Modal
   handleClick: () => void
 }
 
@@ -44,7 +45,7 @@ const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
   );
 };
 
-const mapStateToProps = (state: { user: userType.User, modal: modalType.Modal }) => ({
+const mapStateToProps = (state: { user: User, modal: Modal }) => ({
   user: state.user,
   modal: state.modal
 });

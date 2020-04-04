@@ -1,16 +1,14 @@
 import React from "react";
 import {css} from "aphrodite/no-important";
+import { FormikProps } from "formik";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import baseStyles from "../../../styles";
 import styles from "./MainTextStyle";
 
-type MyMainTextProps = {
-  handleChange: () => void
-  handleBlur: () => void
-}
-
-export const MainText:React.FC<MyMainTextProps> = ({ handleChange, handleBlur }) => {
+// @ts-ignore
+export const MainText: React.FC = (props: FormikProps<{}>) => {
+  const { handleChange, handleBlur } = props;
   return <section className={ css(styles.wrapper) }>
     <div className={ css(baseStyles.flex, styles.header) }>
       <h4 className={ css(styles.font) }>B</h4>

@@ -7,10 +7,10 @@ import validateForm from "../../../utils/validate";
 import { userActions, modalActions } from "../../../redax/actions";
 import { RegisterForm } from "../Components/RegisterForm";
 
-import { userType } from '../../../types';
+import { CreateUserData } from '../../../types/user';
 
 type MyUseRegisterFormProps = {
-  registerData: userType.CreateUserData
+  registerData: CreateUserData
   showModal: (arg0: string) => void
 }
 

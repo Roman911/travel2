@@ -1,11 +1,11 @@
-import { modalType } from "../../types";
+import { Modal } from "../../types/modal";
 const initialState = {
   text: null,
   timeout: null,
 };
 
 type ActionType = {
-  payload: modalType.Modal
+  payload: Modal
   type: string
 }
 

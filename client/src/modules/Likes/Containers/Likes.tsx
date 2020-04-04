@@ -6,13 +6,13 @@ import { addLikeMutation, removeLikeMutation } from './mutations';
 import { postQuery } from '../../Post/Containers/queries';
 import { modalActions } from "../../../redax/actions";
 
-import { userType } from "../../../types";
+import { User } from "../../../types/user";
 type MyLikesProps = {
   id: string
   likes: []
   post: boolean
   showModal: (arg0: string) => void
-  user: userType.User
+  user: User
 }
 
 const Likes:React.FC<MyLikesProps> = ({ id, likes, post, user, showModal }) => {
@@ -57,7 +57,7 @@ const Likes:React.FC<MyLikesProps> = ({ id, likes, post, user, showModal }) => {
     </>
 };
 
-const mapStateToProps = (state: { user: userType.User }) => ({
+const mapStateToProps = (state: { user: User }) => ({
   user: state.user
 });
 

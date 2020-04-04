@@ -28,11 +28,12 @@ export const CreatePost = (props: FormikProps<any>) => {
   });
 
   const EntranceTicketForm = EntranceTicketItems.map((item, index) => {
-    return <EntranceTicket key={ index } id={ item.id } title={ item.title } type={ item.type } value={values[item.id]} touched={touched[item.id]}
+    return <EntranceTicket key={ index } id={ item.id } title={ item.title } type={ item.type } value={values[item.id]}
       // @ts-ignore
-                           andleChange={ handleChange } handleBlur={handleBlur}/>
+                           touched={touched[item.id]}
+                           handleChange={ handleChange } handleBlur={handleBlur}/>
   });
-
+  
   return <section className={ css(baseStyle.wrapper) }>
     <SectionTitle title='Редагування' />
     <div className={css(baseStyle.boxShadow, styles.wrapper)}>
@@ -41,10 +42,12 @@ export const CreatePost = (props: FormikProps<any>) => {
           <div className={css(styles.wrapperBlock)}>
             <div className={css( stylesInput.wrapper )}>
               <p className={css( stylesInput.paragraph )}>Тип матеріалу:</p>
-              // @ts-ignore
-              <MiInput values={ values } handleChange={ handleChange } handleBlur={ handleBlur } id='post' name="type_material" type="radio" value='post' tittle='Стаття' />
-              // @ts-ignore
-              <MiInput values={ values } handleChange={ handleChange } handleBlur={ handleBlur } id='new' name="type_material" type="radio" value='new' tittle='Новина' />
+              <MiInput
+                // @ts-ignore
+                values={ values } handleChange={ handleChange } handleBlur={ handleBlur } id='post' name="type_material" type="radio" value='post' tittle='Стаття' />
+              <MiInput
+                // @ts-ignore
+                values={ values } handleChange={ handleChange } handleBlur={ handleBlur } id='new' name="type_material" type="radio" value='new' tittle='Новина' />
               <input id='tittle' type="text"/>
             </div>
             <div className={css( stylesInput.wrapper )}>
@@ -60,8 +63,7 @@ export const CreatePost = (props: FormikProps<any>) => {
         </div>
         <div className={css( stylesInput.wrapper )}>
           <p className={css( stylesInput.paragraph )}>Короткий опис:</p>
-          // @ts-ignore
-          <textarea className={css(stylesInput.input)} id='small_text' onChange={handleChange} onBlur={handleBlur} rows='2'/>
+          <textarea className={css(stylesInput.input)} id='small_text' onChange={handleChange} onBlur={handleBlur} />
         </div>
         <div className={css(baseStyle.flex)}>
           <div className={css( stylesInput.wrapper )}>
@@ -73,10 +75,10 @@ export const CreatePost = (props: FormikProps<any>) => {
             <input className={css(stylesInput.input)} id='coordinateX' type='text' onChange={handleChange} onBlur={handleBlur}/>
           </div>
         </div>
-        // @ts-ignore
-        <MainText values={ values } handleChange={ handleChange } handleBlur={ handleBlur } />
-        <div className={ css(loginStyles.inputSub) }>
+        <MainText
           // @ts-ignore
+          handleChange={ handleChange } handleBlur={ handleBlur } />
+        <div className={ css(loginStyles.inputSub) }>
           <Button type="submit" nameBtn='Зберегти' isSubmitting={ isSubmitting } handleClick={ null } />
         </div>
       </form>

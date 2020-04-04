@@ -12,7 +12,8 @@ type MyRadioType = {
   tittle: string
 }
 
-export const MiInput = (props: MyRadioType & FormikProps<any>) => {
+// @ts-ignore
+export const MiInput: React.FC = (props: MyRadioType & FormikProps<any>) => {
   const { values, handleChange, handleBlur, id, name, type, value, tittle } = props;
   const label = id === values.type_material ? css( styles.label, styles.labelActive, baseStyles.boxShadow) : css(styles.label);
 

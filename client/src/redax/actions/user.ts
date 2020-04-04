@@ -1,13 +1,13 @@
-import { userType } from '../../types'
+import { UserData, CreateUserData } from '../../types/user'
 
 const Actions = {
-  setData: (data: userType.UserData) => {
+  setData: (data: UserData) => {
     return {
       type: 'USER:SET_DATA',
       payload: data
     }
   },
-  registerData: (data: userType.CreateUserData) => {
+  registerData: (data: CreateUserData) => {
     return {
       type: 'USER:REGISTER_DATA',
       payload: data

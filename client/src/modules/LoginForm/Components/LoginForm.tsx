@@ -4,10 +4,9 @@ import { css } from 'aphrodite/no-important';
 import { FormikProps } from "formik";
 import { Button, FormItem } from "../../../Components";
 import loginStyles from '../../../styles/loginStyles';
+import { LoginFormValues } from '../../../types/form';
 
-import { formType } from '../../../types';
-
-export const LoginForm = (props: FormikProps<formType.LoginFormValues>) => {
+export const LoginForm = (props: FormikProps<LoginFormValues>) => {
   const {
     values,
     touched,
@@ -26,9 +25,10 @@ export const LoginForm = (props: FormikProps<formType.LoginFormValues>) => {
       <form onSubmit={ handleSubmit }>
         <div className={ css(loginStyles.wrapperForm) }>
           <FormItem
-            tittle='Username or email address'
+            tittle='Введіть свій email'
             id="email"
             type="text"
+            // @ts-ignore
             value={values.email}
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -37,9 +37,10 @@ export const LoginForm = (props: FormikProps<formType.LoginFormValues>) => {
             touched={touched.email}
           />
           <FormItem
-            tittle='Password'
+            tittle='Введіть свій пароль'
             id="password"
             type="password"
+            // @ts-ignore
             value={values.password}
             handleChange={handleChange}
             handleBlur={handleBlur}

@@ -6,10 +6,10 @@ import validateForm from "../../../utils/validate";
 import { CreatePost } from "../Components/CreatePost";
 import { addPostMutation } from "./mutations";
 
-import { userType } from "../../../types";
+import { User, UserData } from "../../../types/user";
 type MyCreatePostProps = {
-  user: userType.User
-  data: userType.UserData
+  user: User
+  data: UserData
 }
 
 const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
@@ -56,7 +56,7 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
   return <CreatePost handleSubmit={ handleSubmit } values={ values } touched={ touched } handleChange={ handleChange } handleBlur={ handleBlur } setFieldValue={ setFieldValue } isSubmitting={ isSubmitting } />
 };
 
-const mapStateToProps = (state: { user: userType.User }) => ({
+const mapStateToProps = (state: { user: User }) => ({
   user: state.user
 });
 

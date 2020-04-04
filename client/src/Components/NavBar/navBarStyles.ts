@@ -19,5 +19,8 @@ export default StyleSheet.create({
     borderLeft: '1px solid #333',
     width: 150,
     paddingRight: 20
+  },
+  input: {
+    width: '100%'
   }
 })

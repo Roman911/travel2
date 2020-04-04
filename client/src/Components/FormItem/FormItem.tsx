@@ -20,7 +20,7 @@ export const FormItem = (props: MyFormItemProps & FormikProps<string | number | 
     <div className={ css(styles.inputWrapper) }>
       <input
         id={ id }
-        className={ errors && touched ? css(styles.input, styles.error) : css(styles.input) }
+        className={ errors && touched ? css(styles.input, styles.inputUser, styles.error) : css(styles.input, styles.inputUser) }
         type={ type }
         value={ values }
         onChange={ handleChange }

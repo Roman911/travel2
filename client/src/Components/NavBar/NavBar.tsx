@@ -25,10 +25,9 @@ export const NavBar: React.FC = () => {
       </div>
       <div className={ css(baseStyles.flexSB) }>
         <div className={ css(baseStyles.flexSB, styles.wrapperInput) }>
-          <input placeholder='Search' type="text"/>
+          <input className={ css(styles.input) } placeholder='Search' type="text"/>
           <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faSearch }/>
         </div>
-        // @ts-ignore
         <UseRoutes />
         <Language />
       </div>

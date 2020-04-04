@@ -8,14 +8,10 @@ import baseStyles from "../../styles";
 import styles from "./RoutesStyles";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { Avatar } from "..";
-import { userType } from "../../types";
+import { User } from "../../types/user";
 
-type MyUseRoutesProps = {
-  user: userType.User
-  data: userType.UserData
-}
-
-const UseRoutes: React.FC<MyUseRoutesProps> = ({ user }) => {
+const UseRoutes = (props: { user: User }) => {
+  const { user } = props;
   const { data } = user;
   const [dropdown, setDropdown] = useState(false);
   function handleClick() {
@@ -39,7 +35,7 @@ const UseRoutes: React.FC<MyUseRoutesProps> = ({ user }) => {
   </Link>
 };
 
-const mapStateToProps = (state: { user: userType.User }) => ({
+const mapStateToProps = (state: { user: User }) => ({
   user: state.user
 });
 

@@ -18,6 +18,9 @@ export default StyleSheet.create({
     borderRadius: 3,
     boxShadow: 'inset 0 1px 2px rgba(27,31,35,.075)'
   },
+  inputUser: {
+    width: '100%'
+  },
   icon: {
     position: 'absolute',
     top: '50%',

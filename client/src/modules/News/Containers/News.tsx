@@ -19,7 +19,8 @@ type item = {
   author: { avatar: string; name: string; }
 }
 
-const News = () => {
+// @ts-ignore
+const News: React.FC = () => {
   const { loading, error, data } = useQuery(postsQuery);
   if (loading) return <Loading />;
   if (error) return `Error! ${error}`;

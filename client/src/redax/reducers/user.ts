@@ -1,4 +1,4 @@
-import { userType } from "../../types";
+import { CreateUserData, UserData } from "../../types/user";
 
 const initialState = {
   data: null,
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 type ActionType = {
-  payload: userType.UserData | userType.CreateUserData
+  payload: UserData | CreateUserData
   type: string
 }
 

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { css } from 'aphrodite/no-important';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Language } from "../index";
+import { Language } from "..";
 import UseRoutes from '../Routes/Routes'
 import baseStyles from '../../styles';
 import styles from './navBarStyles';
 import { baseText } from '../../assets/baseUK';
 
-export const NavBar = () => {
+export const NavBar: React.FC = () => {
   const links = baseText.navBar.map((item, index) => {
     return <li key={ index }>
       <Link to={ item.path }>{ item.title }</Link>
@@ -28,6 +28,7 @@ export const NavBar = () => {
           <input placeholder='Search' type="text"/>
           <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faSearch }/>
         </div>
+        // @ts-ignore
         <UseRoutes />
         <Language />
       </div>

@@ -28,7 +28,7 @@ export const InformWindow: React.FC<MyInformWindowProps> = ({ id, children, clos
         </p>
       </div>
       <div className={ css(styles.bottom) } >
-        <Button handleClick={ handleClick } nameBtn='Закрити'  type={ undefined }/>
+        <Button handleClick={ handleClick } nameBtn='Закрити' isSubmitting={ false } type={ undefined }/>
       </div>
     </div>,
     // @ts-ignore

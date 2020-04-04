@@ -16,7 +16,6 @@ type MyNewProps = {
   views: number
   likes: []
   author: { avatar: string, name: string }
-  post: boolean
 }
 
 export const New:React.FC<MyNewProps> = ({ id, title, small_text,  date, cover, views, likes, author }) => {
@@ -39,7 +38,6 @@ export const New:React.FC<MyNewProps> = ({ id, title, small_text,  date, cover, 
     <div className={ css(styles.block) }>
       <div className={css(baseStyles.flexSB, baseStyles.block, baseStyles.bottom)}>
         <ArticleStats isArticle={ false } views={ views } />
-        // @ts-ignore
         <Likes likes={ likes } id={ id } post={ false } />
       </div>
     </div>

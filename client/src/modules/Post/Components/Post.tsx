@@ -30,7 +30,6 @@ export const Post:React.FC<MyPostProps> = ({ id, title, small_text, text, cover,
         <p className={css(styles.text)}>{text}</p>
         <div className={css(baseStyles.flexSB, baseStyles.block, baseStyles.bottom)}>
           <ArticleStats isArticle={true} views={views}/>
-          // @ts-ignore
           <Likes id={id} likes={likes} post={ true } />
         </div>
         <h3>Comments:</h3>

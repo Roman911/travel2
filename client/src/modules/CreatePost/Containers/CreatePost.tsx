@@ -8,16 +8,16 @@ import { addPostMutation } from "./mutations";
 
 import { userType } from "../../../types";
 type MyCreatePostProps = {
+  user: userType.User
   data: userType.UserData
-  user: any
 }
 
-const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ data }) => {
+const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
+  const { data } = user;
   const [ createPost ] = useMutation(addPostMutation);
   const { handleSubmit, handleChange, values, touched, handleBlur, isSubmitting, setSubmitting, setFieldValue } = useFormik({
     initialValues: {
-      type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '',  adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: '',
-      text: ''
+      type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '',  adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: '', text: ''
     },
     validate: values => {
       let errors = {};
@@ -28,10 +28,11 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ data }) => {
       const tags = values.tag.split(' ');
       const coordinates = [ values.coordinateY, values.coordinateX ];
       const tickets = [ values.adultTicket, values.childTicket, values.studentTicket, values.pensionTicket ];
+      const idAuthor = data ? data.userId : null;
       createPost({
         variables: {
           postInput: {
-            idAuthor: data.userId,
+            idAuthor: idAuthor,
             type_material: values.type_material,
             title: values.title,
             link: values.link,
@@ -51,9 +52,12 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ data }) => {
         })
     },
   });
-
   // @ts-ignore
   return <CreatePost handleSubmit={ handleSubmit } values={ values } touched={ touched } handleChange={ handleChange } handleBlur={ handleBlur } setFieldValue={ setFieldValue } isSubmitting={ isSubmitting } />
 };
-// @ts-ignore
-export default connect(({ user }) => user)(CreatePostFormContainer)
+
+const mapStateToProps = (state: { user: userType.User }) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(CreatePostFormContainer)

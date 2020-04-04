@@ -7,7 +7,14 @@ import validateForm from "../../../utils/validate";
 import { userActions, modalActions } from "../../../redax/actions";
 import { RegisterForm } from "../Components/RegisterForm";
 
-const UseRegisterForm = ({ registerData, showModal }) => {
+import { userType } from '../../../types';
+
+type MyUseRegisterFormProps = {
+  registerData: userType.CreateUserData
+  showModal: (arg0: string) => void
+}
+
+const UseRegisterForm:React.FC<MyUseRegisterFormProps> = ({ registerData, showModal }) => {
   const [ createUse ] = useMutation(addUserMutation);
   const { handleSubmit, handleChange, values, errors, touched, handleBlur, isSubmitting, setSubmitting } = useFormik({
     initialValues: { name: '', email: '', password: '' },
@@ -23,6 +30,7 @@ const UseRegisterForm = ({ registerData, showModal }) => {
         }
       }).then(data => {
           if (data) {
+            // @ts-ignore
             registerData(data);
             showModal( 'Користувач успішно створений! Увійдіть в свій акаунт' )
           }
@@ -34,8 +42,9 @@ const UseRegisterForm = ({ registerData, showModal }) => {
           setSubmitting(false)
         })},
   });
-  
+  // @ts-ignore
   return <RegisterForm handleSubmit={ handleSubmit } handleChange={ handleChange } values={ values } errors={ errors } touched={ touched } handleBlur={ handleBlur } isSubmitting={ isSubmitting } />
 };
 
+// @ts-ignore
 export default connect(null, { ...userActions, ...modalActions })(UseRegisterForm)

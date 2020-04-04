@@ -17,13 +17,13 @@ export default StyleSheet.create({
   paragraph: {
     color: colorText,
     width: 150,
-    fontWeight: '600'
+    fontWeight: 600
   },
   input: {
     border: `1px solid ${colorBorderInput}`,
     padding: '10px 15px',
     color: colorTextInput,
-    fontWeight: '600',
+    fontWeight: 600,
     width: 'calc(100% - 160px)',
     ':focus': {
       border: '1px solid black'

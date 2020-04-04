@@ -1,11 +1,19 @@
 import React from "react";
 import { css } from "aphrodite/no-important";
-
+import { FormikProps } from "formik";
 import baseStyles from "../../styles";
 import styles from "./InputStyles";
 
-export const MiInput = ({ values, handleChange, handleBlur, id, name, type, value, tittle }) => {
+type MyRadioType = {
+  id: string
+  name: string
+  type: string
+  value: string
+  tittle: string
+}
 
+export const MiInput = (props: MyRadioType & FormikProps<any>) => {
+  const { values, handleChange, handleBlur, id, name, type, value, tittle } = props;
   const label = id === values.type_material ? css( styles.label, styles.labelActive, baseStyles.boxShadow) : css(styles.label);
 
   return <>

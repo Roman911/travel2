@@ -25,7 +25,6 @@ const News = () => {
   if (error) return `Error! ${error}`;
   const { posts } = data;
   const news = posts.map((item: item, index: number) => {
-    // @ts-ignore
     return <New
       key={ index }
       id={item._id}

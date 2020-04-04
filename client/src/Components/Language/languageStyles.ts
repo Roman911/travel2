@@ -7,7 +7,7 @@ export default StyleSheet.create({
     margin: '10px',
     cursor: 'pointer',
     color: colorIcons,
-    fontWeight: '600',
+    fontWeight: 600,
     borderRadius: 6,
     position: 'relative'
   },

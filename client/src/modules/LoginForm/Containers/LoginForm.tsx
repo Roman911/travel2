@@ -6,6 +6,7 @@ import { LoginForm } from "../Components/LoginForm";
 import { loginQuery } from './queries';
 import { Loading } from '../../../Components';
 import { userActions, modalActions } from "../../../redax/actions/";
+import validateForm from "../../../utils/validate";
 
 type MyUseLoginFormProps = {
   setData: (login: any) => void
@@ -18,6 +19,11 @@ const UseLoginForm:React.FC<MyUseLoginFormProps> = ({ setData, showModal }) => {
     initialValues: {
       email: '',
       password: '',
+    },
+    validate: values => {
+      let errors = {};
+      validateForm({ values, errors });
+      return errors;
     },
     onSubmit: values => {
       userData({
@@ -39,20 +45,10 @@ const UseLoginForm:React.FC<MyUseLoginFormProps> = ({ setData, showModal }) => {
     }));
     showModal('Ви успішно увійшли!');
   }
-
+  // @ts-ignore
   return <LoginForm
-    // @ts-ignore
-    values={values}
-    // @ts-ignore
-    touched={touched}
-    // @ts-ignore
-    errors={errors}
-    // @ts-ignore
-    handleChange={handleChange}
-    // @ts-ignore
-    handleBlur={handleBlur}
-    isSubmitting={isSubmitting}
-    handleSubmit={ handleSubmit }
+    handleSubmit={ handleSubmit } handleChange={ handleChange }
+    values={ values } errors={ errors } touched={ touched } handleBlur={ handleBlur } isSubmitting={ isSubmitting }
   />
 };
 

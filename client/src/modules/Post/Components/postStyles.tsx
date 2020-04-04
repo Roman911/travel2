@@ -19,7 +19,7 @@ export default StyleSheet.create({
     textAlign: 'justify'
   },
   subTittle: {
-    fontWeight: '600'
+    fontWeight: 600
   },
   img: {
     maxWidth: '100%',

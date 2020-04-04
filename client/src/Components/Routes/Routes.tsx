@@ -8,28 +8,25 @@ import baseStyles from "../../styles";
 import styles from "./RoutesStyles";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { Avatar } from "..";
+import { userType } from "../../types";
 
 type MyUseRoutesProps = {
-  data: {
-    name: string
-    avatar: string
-    data: string
-  }
+  user: userType.User
+  data: userType.UserData
 }
 
-const UseRoutes: React.FC<MyUseRoutesProps> = ({ data }) => {
-  const isAuthenticated = !!data;
+const UseRoutes: React.FC<MyUseRoutesProps> = ({ user }) => {
+  const { data } = user;
   const [dropdown, setDropdown] = useState(false);
   function handleClick() {
     !dropdown ? setDropdown(true) : setDropdown(false)
   }
-  if (isAuthenticated) {
+  if (data) {
     return <div className={ css(baseStyles.flex) }>
       <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faBell }/>
       <div className={ css(baseStyles.flex, styles.userItem) } onClick={ handleClick }>
         <Avatar name={data.name} avatar={data.avatar} />
         <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faAngleDown }/>
-        // @ts-ignore
         { dropdown && <DropdownMenu data={ data } /> }
       </div>
     </div>
@@ -42,5 +39,8 @@ const UseRoutes: React.FC<MyUseRoutesProps> = ({ data }) => {
   </Link>
 };
 
-// @ts-ignore
-export default connect(({ user }) => user)(UseRoutes)
+const mapStateToProps = (state: { user: userType.User }) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(UseRoutes)

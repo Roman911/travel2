@@ -1,20 +1,13 @@
-import React, { FormEvent } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { css } from 'aphrodite/no-important';
+import { FormikProps } from "formik";
 import { Button, FormItem } from "../../../Components";
 import loginStyles from '../../../styles/loginStyles';
 
-type MyLoginFormProps = {
-  values: string
-  touched: string
-  errors: string
-  handleChange: () => void
-  handleBlur: () => void
-  isSubmitting: any
-  handleSubmit: ((event: FormEvent<HTMLFormElement>) => void) | undefined
-}
+import { formType } from '../../../types';
 
-export const LoginForm:React.FC<MyLoginFormProps> = props => {
+export const LoginForm = (props: FormikProps<formType.LoginFormValues>) => {
   const {
     values,
     touched,
@@ -36,11 +29,9 @@ export const LoginForm:React.FC<MyLoginFormProps> = props => {
             tittle='Username or email address'
             id="email"
             type="text"
-            // @ts-ignore
             value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            // @ts-ignore
+            handleChange={handleChange}
+            handleBlur={handleBlur}
             errors={errors.email}
             // @ts-ignore
             touched={touched.email}
@@ -49,11 +40,9 @@ export const LoginForm:React.FC<MyLoginFormProps> = props => {
             tittle='Password'
             id="password"
             type="password"
-            // @ts-ignore
             value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            // @ts-ignore
+            handleChange={handleChange}
+            handleBlur={handleBlur}
             errors={errors.password}
             // @ts-ignore
             touched={touched.password}
@@ -62,8 +51,7 @@ export const LoginForm:React.FC<MyLoginFormProps> = props => {
             <Button
               type="submit"
               nameBtn='Увійти'
-              // @ts-ignore
-              disabled={ isSubmitting }
+              isSubmitting={ isSubmitting }
               handleClick={ null }
             />
           </div>

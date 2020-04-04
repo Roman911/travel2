@@ -16,13 +16,11 @@ type MyAppProps = {
 const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
   const { data, registerData } = user;
   const { text, timeout } = modal;
-
   UseAuth();
   let token;
   if (data) {
     token = !!data.token
   }
-
   return (
     <Router>
       <div>
@@ -36,12 +34,8 @@ const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
             path='/post/:id'
           />
           <Route component={ About } path="/about" />
-          <Route path="/login" >
-            { token ? <Redirect to="/" /> : <UseLoginForm /> }
-          </Route>
-          <Route path='/register'>
-            { ( registerData || token ) ? <Redirect to='/login' /> : <UseRegisterForm />  }
-          </Route>
+          <Route path="/login" >{ token ? <Redirect to="/" /> : <UseLoginForm /> }</Route>
+          <Route path='/register'>{ ( registerData || token ) ? <Redirect to='/login' /> : <UseRegisterForm /> }</Route>
           <Route component={ CreatePostFormContainer } path="/create-post" />
         </Switch>
         { text && <InformWindow id={'modal'} children={ text } closedModal={ timeout } handleClick={ handleClick } /> }

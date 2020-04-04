@@ -8,20 +8,20 @@ type MyEntranceTicketProps = {
   title: string
   type: string
   value: string
-  onChange: () => void
-  onBlur: () => void
+  handleChange: () => void
+  handleBlur: () => void
 }
 
-export const EntranceTicket:React.FC<MyEntranceTicketProps> = ({ id, title, type, value, onChange, onBlur }) => {
+export const EntranceTicket:React.FC<MyEntranceTicketProps> = ({ id, title, type, value, handleChange, handleBlur }) => {
   return <div className={ css(stylesInput.wrapper) }>
       <p className={css( stylesInput.paragraph, styles.textSmall )}>{ title }</p>
       <input
         className={css(stylesInput.input, styles.inputSmall)}
-        id={id}
-        type={type}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
+        id={ id }
+        type={ type }
+        value={ value }
+        onChange={ handleChange }
+        onBlur={ handleBlur }
       />
     </div>
 };

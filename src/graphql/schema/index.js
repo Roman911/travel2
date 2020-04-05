@@ -13,6 +13,9 @@ type Post {
     tickets: [String]
     small_text: String
     coordinates: [String]
+    location: String
+    work_time: String
+    isType: String
     text: String
     views: Int
     likes: [String]
@@ -28,6 +31,9 @@ input PostInput {
   tickets: [String]
   small_text: String
   coordinates: [String]
+  location: String
+  work_time: String
+  isType: String
   photo: String
   text: String
 }

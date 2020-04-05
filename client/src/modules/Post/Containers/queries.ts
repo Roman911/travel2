@@ -11,7 +11,11 @@ export const postQuery = gql`
       coverPost
       views
       likes
+      tickets
       coordinates
+      location
+      work_time
+      isType
       author {
         _id
         name

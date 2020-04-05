@@ -35,8 +35,10 @@ type Post {
   coverNews: String
   coverPost: String
   createdAt: String
+  isType: String
   likes: [String]
   link: String
+  location: String
   small_text: String
   tags: [String]
   text: String
@@ -44,6 +46,7 @@ type Post {
   title: String
   type_material: String
   views: Int
+  work_time: String
 }
 
 type RootMutation {
@@ -79,7 +82,9 @@ input EventInput {
 input PostInput {
   coordinates: [String]
   idAuthor: ID
+  isType: String
   link: String
+  location: String
   photo: String
   small_text: String
   tags: [String]
@@ -87,6 +92,7 @@ input PostInput {
   tickets: [String]
   title: String
   type_material: String
+  work_time: String
 }
 
 input UserInput {

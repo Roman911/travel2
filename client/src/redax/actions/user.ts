@@ -1,7 +1,7 @@
 import { UserData, CreateUserData } from '../../types/user'
 
 const Actions = {
-  setData: (data: UserData) => {
+  setData: (data: UserData | null) => {
     return {
       type: 'USER:SET_DATA',
       payload: data

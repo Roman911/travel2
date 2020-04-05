@@ -1,22 +1,22 @@
 export const EntranceTicketItems = [
   {
     title: 'Дорослий:',
-    type: 'text',
+    type: 'number',
     id: 'adultTicket'
   },
   {
     title: 'Дитячий:',
-    type: 'text',
+    type: 'number',
     id: 'childTicket'
   },
   {
     title: 'Студенський:',
-    type: 'text',
+    type: 'number',
     id: 'studentTicket'
   },
   {
     title: 'Пенсійний:',
-    type: 'text',
+    type: 'number',
     id: 'pensionTicket'
   }
 ];

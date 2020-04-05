@@ -5,20 +5,13 @@ import styles from './postStyles';
 import { InfoBar, ArticleStats, AddedComment, SectionTitle, AuthorPost } from "../../../Components";
 import { Likes } from '../../';
 
+import { PostData } from '../../../types/post';
 type MyPostProps = {
-  id: string
-  title: string
-  small_text: string
-  text: string
-  cover: string
-  views: number
-  likes: []
-  author: { avatar: string; name: string; }
-  date: string
-  coordinates: string
+  post: PostData
 }
 
-export const Post:React.FC<MyPostProps> = ({ id, title, small_text, text, cover, views, likes, author, date, coordinates }) => {
+export const Post:React.FC<MyPostProps> = ({ post }) => {
+  const { id, title, small_text, text, coverPost, views, likes, author, date, coordinates, tickets, location, work_time, isType } = post;
   return <section className={css(baseStyles.wrapper)}>
     <SectionTitle title="Стаття"/>
     <div className={css(baseStyles.flexVFS, styles.wrapperL)}>
@@ -26,7 +19,7 @@ export const Post:React.FC<MyPostProps> = ({ id, title, small_text, text, cover,
         <AuthorPost isArticle={true} author={author} date={date}/>
         <h2 className={css(styles.title)}>{title}</h2>
         <p className={css(styles.text)}>{small_text}</p>
-        <img className={css(styles.img)} src={cover} alt=""/>
+        <img className={css(styles.img)} src={ coverPost } alt=""/>
         <p className={css(styles.text)}>{text}</p>
         <div className={css(baseStyles.flexSB, baseStyles.block, baseStyles.bottom)}>
           <ArticleStats isArticle={true} views={views}/>
@@ -35,7 +28,7 @@ export const Post:React.FC<MyPostProps> = ({ id, title, small_text, text, cover,
         <h3>Comments:</h3>
         <AddedComment/>
       </div>
-      <InfoBar coordinates={ coordinates }/>
+      <InfoBar coordinates={ coordinates } tickets={ tickets } location={ location } work_time={ work_time } isType={ isType } />
     </div>
   </section>
 };

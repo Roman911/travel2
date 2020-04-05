@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { Loading } from "../../Components";
-import icon from "../../assets/castle.jpg";
 
 type MyGoogleMapsProps = {
   mapContainerStyle: { height: string, width: string }
   center: { lat: number, lng: number }
   zoom: number
-  marks: [{ id: number; coordinates: number[] }]
+  marks: [{ id: number; coordinates: number[]; isType: string }]
 }
 type setPark = {
   id: number
@@ -33,8 +32,7 @@ const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zo
           }}
           position={{lat: Number(park.coordinates[0]), lng: Number(park.coordinates[1])}}
           icon={{
-            url: icon,
-            scaledSize: new window.google.maps.Size(25, 25)
+            url: `http://326b53d9806dcac09833-a590b81c812a57d0f4b1c3b1d1b7a9ea.r50.cf3.rackcdn.com/markersIcon/${park.isType}.png`
           }}
         />
       ))}

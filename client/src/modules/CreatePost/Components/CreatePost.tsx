@@ -75,6 +75,21 @@ export const CreatePost = (props: FormikProps<any>) => {
             <input className={css(stylesInput.input)} id='coordinateX' type='text' onChange={handleChange} onBlur={handleBlur}/>
           </div>
         </div>
+        <div className={css( stylesInput.wrapper )}>
+          <p className={css( stylesInput.paragraph )}>Місце знаходження:</p>
+          <input className={css(stylesInput.input)} id='location' type='text' onChange={handleChange} onBlur={handleBlur}/>
+        </div>
+        <div className={css( stylesInput.wrapper )}>
+          <p className={css( stylesInput.paragraph )}>Час роботи:</p>
+          <input className={css(stylesInput.input)} id='work_time' type='text' onChange={handleChange} onBlur={handleBlur}/>
+        </div>
+        <div className={css( stylesInput.wrapper )}>
+          <p className={css( stylesInput.paragraph )}>Тип:</p>
+          <select className={css(stylesInput.input)} name="isType" id="isType" onChange={handleChange} onBlur={handleBlur}>
+            <option value="other">Інше</option>
+            <option value="castle">Замки</option>
+          </select>
+        </div>
         <MainText
           // @ts-ignore
           handleChange={ handleChange } handleBlur={ handleBlur } />

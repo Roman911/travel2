@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { css } from "aphrodite/no-important";
 import baseStyles from "../../styles";
 import styles from "./FromImputStyle";

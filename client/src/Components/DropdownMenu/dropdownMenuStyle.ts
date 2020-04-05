@@ -11,7 +11,8 @@ export default StyleSheet.create({
     border: `1px solid ${ colorIcons }`,
     marginTop: 12,
     width: 180,
-    borderRadius: 4
+    borderRadius: 4,
+    zIndex: 2
   },
   triangle: {
     width: 0,

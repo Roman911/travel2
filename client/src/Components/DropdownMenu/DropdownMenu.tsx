@@ -6,19 +6,14 @@ import { userActions } from "../../redax/actions";
 import { dropdownMenuItems } from './dropdownMenu.config';
 import styles from './dropdownMenuStyle';
 
+import { UserData } from '../../types/user';
 type MyDropdownMenuProps = {
-  data: {
-    userId: string
-    token: string
-    name: string
-    avatar: string
-  }
-  setData: () => {}
+  data: UserData
+  setData: (data: UserData | null) => {}
 }
 
 const DropdownMenu: React.FC<MyDropdownMenuProps> = ({ data, setData }) => {
   const logout = () => {
-    // @ts-ignore
     setData(null);
     localStorage.removeItem('userData')
   };
@@ -37,5 +32,4 @@ const DropdownMenu: React.FC<MyDropdownMenuProps> = ({ data, setData }) => {
   </div>
 };
 
-// @ts-ignore
 export default connect(null, { ...userActions })(DropdownMenu)

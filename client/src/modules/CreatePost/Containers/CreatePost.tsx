@@ -17,7 +17,7 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
   const [ createPost ] = useMutation(addPostMutation);
   const { handleSubmit, handleChange, values, touched, handleBlur, isSubmitting, setSubmitting, setFieldValue } = useFormik({
     initialValues: {
-      type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '',  adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: '', text: ''
+      type_material: 'post', title: '', image_loader: '', link: '', tag: '', price: '', small_text: '', coordinateY: '', coordinateX: '', location: '', work_time: '',  adultTicket: '', childTicket: '', studentTicket: '', pensionTicket: '', isType: 'other', text: ''
     },
     validate: values => {
       let errors = {};
@@ -27,7 +27,11 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
     onSubmit: values => {
       const tags = values.tag.split(' ');
       const coordinates = [ values.coordinateY, values.coordinateX ];
-      const tickets = [ values.adultTicket, values.childTicket, values.studentTicket, values.pensionTicket ];
+      const tickets = [];
+      values.adultTicket && tickets.push(`Дорослий: ${ values.adultTicket } грн`);
+      values.childTicket && tickets.push(`Дитячий: ${ values.childTicket } грн`);
+      values.studentTicket && tickets.push(`Студенський: ${ values.studentTicket } грн`);
+      values.pensionTicket && tickets.push(`Пенсійний: ${ values.pensionTicket } грн`);
       const idAuthor = data ? data.userId : null;
       createPost({
         variables: {
@@ -40,6 +44,9 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
             tickets: tickets,
             small_text: values.small_text,
             coordinates: coordinates,
+            location: values.location,
+            work_time: values.work_time,
+            isType: values.isType,
             text: values.text
           }
         }

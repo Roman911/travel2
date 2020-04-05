@@ -11,19 +11,23 @@ export const Maps: React.FC = () => {
   const marks: any = [
     {
       id: 1,
-      coordinates: [50.518551, 30.784221]
+      coordinates: [50.518551, 30.784221],
+      isType: 'castle'
     },
     {
       id: 2,
-      coordinates: [50.515549, 30.789926]
+      coordinates: [50.515549, 30.789926],
+      isType: 'castle'
     },
     {
       id: 3,
-      coordinates: [50.512793, 30.778473]
+      coordinates: [50.512793, 30.778473],
+      isType: 'castle'
     },
     {
       id: 4,
-      coordinates: [50.518032, 30.771738]
+      coordinates: [50.518032, 30.771738],
+      isType: 'castle'
     },
   ];
 

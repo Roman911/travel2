@@ -18,18 +18,7 @@ const Posts = () => {
   if (error) return `Error! ${error}`;
   const { post } = data;
 
-  return <Post
-    id={ post._id }
-    title={ post.title }
-    date={ post.createdAt }
-    small_text={ post.small_text }
-    text={ post.text }
-    cover={ post.coverPost }
-    views={ post.views }
-    likes={ post.likes }
-    author={ post.author }
-    coordinates={ post.coordinates }
-  />
+  return <Post post={ post } />
 };
 
 export default Posts

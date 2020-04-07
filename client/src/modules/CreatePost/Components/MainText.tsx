@@ -7,7 +7,7 @@ import baseStyles from "../../../styles";
 import styles from "./MainTextStyle";
 
 // @ts-ignore
-export const MainText: React.FC = (props: FormikProps<{}>) => {
+export const MainText: React.FC = (props: FormikProps<any>) => {
   const { handleChange, handleBlur } = props;
   return <section className={ css(styles.wrapper) }>
     <div className={ css(baseStyles.flex, styles.header) }>

@@ -21,7 +21,6 @@ type Post {
     likes: [String]
     createdAt: String
 }
-
 input PostInput {
   title: String
   idAuthor: ID
@@ -37,7 +36,6 @@ input PostInput {
   photo: String
   text: String
 }
-
 type Event {
   _id: ID!
   title: String!
@@ -46,19 +44,16 @@ type Event {
   date: String!
   creator: User!
 }
-
 type User {
   _id: ID!
   email: String!
   password: String
 }
-
 type Author {
   _id: ID!
   avatar: String
   name: String
 }
-
 type AuthData {
   userId: ID!
   token: String!
@@ -66,27 +61,23 @@ type AuthData {
   avatar: String
   name: String
 }
-
 input EventInput {
   title: String!
   description: String!
   price: Float!
   date: String!
 }
-
 input UserInput {
   name: String!
   email: String!
   password: String!
 }
-
 type RootQuery {
     events: [Event!]!
     posts: [Post!]!
     post(_id: ID!): Post!
     login(email: String!, password: String!): AuthData!
 }
-
 type RootMutation {
     createEvent(eventInput: EventInput): Event
     createUser(userInput: UserInput): User
@@ -96,7 +87,6 @@ type RootMutation {
     addLike(postId: ID!, userId: ID!): Post
     removeLike(postId: ID!, userId: ID!): Post
 }
-
 schema {
     query: RootQuery
     mutation: RootMutation

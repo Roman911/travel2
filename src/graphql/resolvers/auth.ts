@@ -1,10 +1,23 @@
 const bcrypt = require('bcryptjs');
+// @ts-ignore
 const jwt = require('jsonwebtoken');
-
+// @ts-ignore
 const User = require('../../models/Users');
 
+type MyCreateUserProps = {
+  userInput: {
+    email: string
+    password: string
+    name: string
+  }
+}
+type MyLoginProps = {
+  email: string
+  password: string
+}
+
 module.exports = {
-  createUser: async args => {
+  createUser: async (args: MyCreateUserProps) => {
     try {
       const existingUser = await User.findOne({ email: args.userInput.email });
       if (existingUser) {
@@ -26,7 +39,8 @@ module.exports = {
       throw err;
     }
   },
-  login: async ({ email, password }) => {
+  login: async (args: MyLoginProps) => {
+    const { email, password } = args;
     const user = await User.findOne({ email: email });
     if (!user) {
       throw new Error('Неправильний логін або пароль!');

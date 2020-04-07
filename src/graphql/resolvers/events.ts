@@ -1,4 +1,5 @@
 const Events = require('../../models/events');
+// @ts-ignore
 const User = require('../../models/Users');
 
 const { transformEvent } = require('./merge');
@@ -7,14 +8,14 @@ module.exports = {
   events: async () => {
     try {
       const events = await Events.find();
-      return events.map(event => {
+      return events.map((event: any) => {
         return transformEvent(event);
       });
     } catch (err) {
       throw err;
     }
   },
-  createEvent: async (args, req) => {
+  createEvent: async (args: any, req: any) => {
     if (!req.isAuth) {
       throw new Error('Unauthenticated!');
     }

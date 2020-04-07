@@ -7,12 +7,14 @@ import { CreatePost } from "../Components/CreatePost";
 import { addPostMutation } from "./mutations";
 
 import { User, UserData } from "../../../types/user";
+import {modalActions} from "../../../redax/actions";
 type MyCreatePostProps = {
   user: User
   data: UserData
+  showModal: (arg0: string) => void
 }
 
-const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
+const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user, showModal }) => {
   const { data } = user;
   const [ createPost ] = useMutation(addPostMutation);
   const { handleSubmit, handleChange, values, touched, handleBlur, isSubmitting, setSubmitting, setFieldValue } = useFormik({
@@ -51,7 +53,10 @@ const CreatePostFormContainer:React.FC<MyCreatePostProps> = ({ user }) => {
           }
         }
       })
-        .then(() => {
+        .then(data => {
+          if (data) {
+            showModal('Статю успішно створено!')
+          }
           setSubmitting(false)
         })
         .catch( () => {
@@ -67,4 +72,4 @@ const mapStateToProps = (state: { user: User }) => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(CreatePostFormContainer)
+export default connect(mapStateToProps, { ...modalActions })(CreatePostFormContainer)

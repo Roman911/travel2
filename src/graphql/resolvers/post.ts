@@ -1,18 +1,19 @@
 const Post = require('../../models/Post');
+// @ts-ignore
 const { transformPost } = require('./merge');
 
 module.exports = {
-  posts: async (args, req) => {
+  posts: async (args: any, req: { idAuthor: any; }) => {
     try {
       const posts = await Post.find({author: req.idAuthor});
-      return posts.map(post => {
+      return posts.map((post: MyTransformPost) => {
         return transformPost(post);
       });
     } catch (err) {
       throw err;
     }
   },
-  post: async (args) => {
+  post: async (args: { _id: string }) => {
     try {
       const post = await Post.findById(args._id);
       if (post) {
@@ -24,7 +25,7 @@ module.exports = {
       throw err
     }
   },
-  createPost: async (args) => {
+  createPost: async (args: { postInput: any; }) => {
     const { postInput } = args;
     const post = new Post({
       title: postInput.title,
@@ -47,7 +48,7 @@ module.exports = {
     });
     return await post.save()
   },
-  addLike: async (args) => {
+  addLike: async (args: { postId: string; userId: string }) => {
     try {
       const post = await Post.findById(args.postId);
       const { likes } = post;
@@ -60,7 +61,7 @@ module.exports = {
       throw err
     }
   },
-  removeLike: async (args) => {
+  removeLike: async (args: { postId: string; userId: string }) => {
     try {
       const post = await Post.findById(args.postId);
       const { likes } = post;

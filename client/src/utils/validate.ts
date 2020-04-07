@@ -1,5 +1,5 @@
-// @ts-ignore
-export default ({ values, errors }) => {
+export default (props: any) => {
+  const { values, errors } = props;
   const rules = {
     name: (value: string) => {
       if (!value) {

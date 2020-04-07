@@ -1,8 +1,17 @@
+// @ts-ignore
 const User = require('../../models/Users');
-
 const { dateToString } = require('../../helpers/date');
 
-const author = async authorId => {
+type MyTransformPost = {
+  _doc: {
+    createdAt: any
+    updatedAt: any
+  }
+  id: string
+  idAuthor: string
+}
+
+const author = async (authorId: any) => {
   try {
     const author = await User.findById(authorId);
     return {
@@ -14,10 +23,12 @@ const author = async authorId => {
   }
 };
 
-const transformPost = post => {
+// @ts-ignore
+const transformPost = (post: MyTransformPost) => {
   return {
     ...post._doc,
     _id: post.id,
+    // @ts-ignore
     author: author.bind(this, post.idAuthor),
     createdAt: dateToString(post._doc.createdAt),
     updatedAt: dateToString(post._doc.updatedAt)

@@ -5,8 +5,8 @@ import bodyParser from  'body-parser';
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const graphQlSchema = require('./graphql/schema/index');
-const graphQlResolvers = require('./graphql/resolvers/index');
+const graphQlSchema = require('./graphql/schema');
+const graphQlResolvers = require('./graphql/resolvers');
 
 const isAuth = require('./middlewares/is-auth');
 

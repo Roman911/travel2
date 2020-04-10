@@ -3,14 +3,10 @@ import { css } from "aphrodite"
 import { SectionTitle } from ".."
 import { GoogleMaps } from "../../Containers"
 import baseStyles from '../../styles'
+import { Locations } from "../../types/locations";
 
 type MyMapsProps = {
-  locations: {
-    coordinates: string[]
-    isType: string
-    small_text: string
-    title: string
-  }[]
+  locations: Locations
 }
 
 export const Maps: React.FC<MyMapsProps> = ({ locations }) => {

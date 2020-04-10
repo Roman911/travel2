@@ -2,7 +2,8 @@ const Locations = require('../../models/Locations');
 
 type MyLocationsInputProps = {
   idAuthor: string
-  idPost: string
+  linkToPost: string
+  cover: string
   title: string
   tags: string[]
   small_text: string
@@ -21,11 +22,19 @@ module.exports = {
       throw err;
     }
   },
+  location: async (args: { _id: string }) => {
+    try {
+      return await Locations.findById(args._id)
+    } catch (err) {
+      throw err;
+    }
+  },
   createLocations: async (args: { locationsInput: MyLocationsInputProps }) => {
     const { locationsInput } = args;
     const locations = new Locations({
       idAuthor: locationsInput.idAuthor,
-      idPost: locationsInput.idPost,
+      linkToPost: locationsInput.linkToPost,
+      cover: locationsInput.cover,
       title: locationsInput.title,
       tags: locationsInput.tags,
       small_text: locationsInput.small_text,

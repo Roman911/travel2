@@ -64,7 +64,8 @@ type AuthData {
 type Locations {
   _id: ID!
   idAuthor: String
-  idPost: String
+  cover: String
+  linkToPost: String
   title: String
   tags: [String]
   small_text: String
@@ -77,7 +78,8 @@ type Locations {
 }
 input LocationsInput {
   idAuthor: String
-  idPost: String
+  cover: String
+  linkToPost: String
   title: String
   tags: [String]
   small_text: String
@@ -104,6 +106,7 @@ type RootQuery {
     post(_id: ID!): Post!
     login(email: String!, password: String!): AuthData!
     locations: [Locations]
+    location(_id: ID!): Locations
 }
 type RootMutation {
     createEvent(eventInput: EventInput): Event

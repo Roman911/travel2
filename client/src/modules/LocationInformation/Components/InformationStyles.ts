@@ -1,6 +1,23 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
 import { colorBtn } from '../../../variabels'
+
+const translateKeyframes = {
+  '0%': {
+    transform: 'translateX(-350px)'
+  },
+  '100%': {
+    transform: 'translateX(0)',
+  },
+};
+const closedWindow = {
+  '0%': {
+    transform: 'translateX(0)'
+  },
+  '100%': {
+    transform: 'translateX(-350px)',
+  },
+};
 
 export default StyleSheet.create({
   wrapper: {
@@ -8,7 +25,13 @@ export default StyleSheet.create({
     position: 'absolute',
     zIndex: 2,
     background: '#fff',
-    height: '100%'
+    height: '100%',
+    animationName: [translateKeyframes],
+    animationDuration: '0.7s'
+  },
+  closedWindow: {
+    animationName: [closedWindow],
+    animationDuration: '0.7s'
   },
   block: {
     width: '100%',
@@ -27,7 +50,8 @@ export default StyleSheet.create({
   icon: {
     color: '#fff',
     height: '20px',
-    width: 'auto !important'
+    width: 'auto !important',
+    cursor: 'pointer'
   },
   text: {
     fontSize: '0.9rem',

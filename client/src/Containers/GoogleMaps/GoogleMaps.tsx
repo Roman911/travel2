@@ -1,41 +1,41 @@
-import React, { useState } from "react";
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import { Loading } from "../../Components";
-import { LocationInformation } from "../../modules";
+import React, { useState } from "react"
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import { Loading } from "../../Components"
+import { LocationInformation } from "../../modules"
+import { Locations } from "../../types/locations"
 
 type MyGoogleMapsProps = {
   mapContainerStyle: { height: string, width: string }
   center: { lat: number, lng: number }
   zoom: number
-  locations: {
-    coordinates: string[]
-    isType: string
-    small_text: string
-    title: string
-  }[]
-}
-type setPark = {
-  id: number
-  coordinates: string[]
+  locations: Locations
 }
 
 const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zoom, locations }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyDLRRgxqKe9Ok-an59Hh7qxfKZG0mGqHW8"
   });
-  const [selectedPark, setSelectedPark] = useState<null | setPark>(null);
+  const [selectedPark, setSelectedPark] = useState<null | string>(null)
+  const [closeWindow, setCloseWindow] = useState<boolean>(false)
+  const handleClick = () => {
+    setCloseWindow(true)
+    setTimeout(() => {
+      setSelectedPark(null)
+      setCloseWindow(false)
+    }, 700)
+  }
   const renderMap = () => {
     return <GoogleMap
       mapContainerStyle={ mapContainerStyle }
       zoom={ zoom }
       center={ center }
     >
-      <LocationInformation />
+      { selectedPark && <LocationInformation _id={ selectedPark } handleClick={ handleClick } closeWindow={ closeWindow } /> }
       {locations.map((park, index) => (
         <Marker
           key={ index }
           onClick={() => {
-            setSelectedPark({ id: index, coordinates: park.coordinates })
+            setSelectedPark(park._id )
           }}
           position={{lat: Number(park.coordinates[0]), lng: Number(park.coordinates[1])}}
           icon={{
@@ -43,16 +43,6 @@ const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zo
           }}
         />
       ))}
-      {selectedPark && (
-        <InfoWindow
-          position={{lat: Number(selectedPark.coordinates[0]), lng: Number(selectedPark.coordinates[1])}}
-          onCloseClick={() => {
-            setSelectedPark(null)
-          }}
-        >
-          <div>info</div>
-        </InfoWindow>
-      )}
     </GoogleMap>
   };
   if (loadError) {

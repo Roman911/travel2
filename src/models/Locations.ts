@@ -2,7 +2,8 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ILocations extends Document {
   idAuthor: string,
-  idPost: string,
+  linkToPost: string,
+  cover: string,
   title: string,
   tags: string[],
   small_text: string,
@@ -18,7 +19,8 @@ export interface ILocations extends Document {
 
 const LocationsSchema = new Schema({
   idAuthor: String,
-  idPost: String,
+  linkToPost: String,
+  cover: String,
   title: String,
   tags: Array,
   small_text: String,

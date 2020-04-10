@@ -32,11 +32,12 @@ type Locations {
   _id: ID!
   city: String
   coordinates: [String]
+  cover: String
   createdAt: String
   district: String
   idAuthor: String
-  idPost: String
   isType: String
+  linkToPost: String
   region: String
   small_text: String
   tags: [String]
@@ -77,6 +78,7 @@ type RootMutation {
 
 type RootQuery {
   events: [Event!]!
+  location(_id: ID!): Locations
   locations: [Locations]
   login(email: String!, password: String!): AuthData!
   post(_id: ID!): Post!
@@ -99,10 +101,11 @@ input EventInput {
 input LocationsInput {
   city: String
   coordinates: [String]
+  cover: String
   district: String
   idAuthor: String
-  idPost: String
   isType: String
+  linkToPost: String
   region: String
   small_text: String
   tags: [String]

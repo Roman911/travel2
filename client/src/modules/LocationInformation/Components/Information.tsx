@@ -1,30 +1,41 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { css } from "aphrodite/no-important"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { faCloudsmith } from "@fortawesome/free-brands-svg-icons"
 import baseStyle from '../../../styles'
 import styles from './InformationStyles'
+import { Location } from '../../../types/locations'
 
-export const Information = () => {
-  return <div className={ css(styles.wrapper) }>
+type MyInformationProps = {
+  location: Location
+  handleClick: () => void
+  closeWindow: boolean
+}
+
+export const Information: React.FC<MyInformationProps> = ({ location, handleClick, closeWindow }) => {
+  const { cover, linkToPost, small_text, title } = location
+
+  const viewWindow = closeWindow ? css(styles.wrapper, styles.closedWindow) : css(styles.wrapper)
+
+  return <div className={ viewWindow }>
     <div className={ css(styles.blockImg) }>
-      <img src="http://326b53d9806dcac09833-a590b81c812a57d0f4b1c3b1d1b7a9ea.r50.cf3.rackcdn.com/locationInformation/pz_350.jpg" alt=""/>
+      <img src={ cover } alt=""/>
     </div>
     <div className={ css(styles.block, baseStyle.flexSB) }>
-      <FontAwesomeIcon className={ css(styles.icon) } icon={ faArrowLeft }/>
-      <p className={ css(styles.title) }>Підгорецький замок</p>
+      <FontAwesomeIcon onClick={ handleClick } className={ css(styles.icon) } icon={ faArrowLeft }/>
+      <p className={ css(styles.title) }>{ title }</p>
       <FontAwesomeIcon className={ css(styles.icon) } icon={ faCloudsmith }/>
     </div>
     <div className={ css(styles.blockText) }>
-      <p className={ css(styles.text) }>Підгорецький замок - історико-архітектурний шедевр ХVІІ століття, один із найкрасивіших замків України в стилі ренесанс, який за вишуканістю не поступається французькому Версалю. Розташований він у селі Підгірці Львівської області. Разом з Олеським і Золочівським замками Підгорецький замок включений у популярний туристичний маршрут, так звану «Золоту підкову Львівщини».</p>
+      <p className={ css(styles.text) }>{ small_text }</p>
     </div>
-    <div className={ css(styles.blockText) }>
-      <p className={ css(styles.textInfo) }>Більше про Підгорецький замок можете подивитись тут:</p>
-      <Link to="/register">
-        <span className={css(styles.link)}>Підгорецький замок</span>
+    { linkToPost.length !== 0 && <div className={ css(styles.blockText) }>
+      <p className={ css(styles.textInfo) }>Більше про { title } можете подивитись тут:</p>
+      <Link to={`/post/${ linkToPost }`}>
+        <span className={css(styles.link)}>{ title }</span>
       </Link>
-    </div>
+    </div> }
   </div>
 }

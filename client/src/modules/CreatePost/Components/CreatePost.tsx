@@ -1,17 +1,17 @@
 import React from "react";
 import { css } from "aphrodite/no-important";
 import { FormikProps } from "formik";
-import baseStyle from "../../../styles";
-import { Button, SectionTitle, MiInput, Input } from "../../../Components";
+import {Button, SectionTitle, MiInput, Input, Select} from "../../../Components";
 import { EntranceTicket } from "./EntranceTicket";
 import { MainText } from "./MainText";
 import styles from "./CreatePostStyles";
+import baseStyle from "../../../styles";
 import stylesInput from "../../../Components/Input/InputStyles";
 import loginStyles from "../../../styles/loginStyles";
 import { items } from './confige';
 import { EntranceTicketItems } from './EntranceTicketConfige';
 
-export const CreatePost = (props: FormikProps<any>) => {
+export const CreatePost = (props: FormikProps<any>): any => {
   const {
     handleSubmit,
     values,
@@ -48,7 +48,6 @@ export const CreatePost = (props: FormikProps<any>) => {
               <MiInput
                 // @ts-ignore
                 values={ values } handleChange={ handleChange } handleBlur={ handleBlur } id='new' name="type_material" type="radio" value='new' tittle='Новина' />
-              <input id='tittle' type="text"/>
             </div>
             <div className={css( stylesInput.wrapper )}>
               <p className={css( stylesInput.paragraph )}>Обкладинка:</p>
@@ -83,13 +82,8 @@ export const CreatePost = (props: FormikProps<any>) => {
           <p className={css( stylesInput.paragraph )}>Час роботи:</p>
           <input className={css(stylesInput.input)} id='work_time' type='text' onChange={handleChange} onBlur={handleBlur}/>
         </div>
-        <div className={css( stylesInput.wrapper )}>
-          <p className={css( stylesInput.paragraph )}>Тип:</p>
-          <select className={css(stylesInput.input)} name="isType" id="isType" onChange={handleChange} onBlur={handleBlur}>
-            <option value="other">Інше</option>
-            <option value="castle">Замки</option>
-          </select>
-        </div>
+        // @ts-ignore
+        <Select handleChange={ handleChange } handleBlur={ handleBlur } />
         <MainText
           // @ts-ignore
           handleChange={ handleChange } handleBlur={ handleBlur } />

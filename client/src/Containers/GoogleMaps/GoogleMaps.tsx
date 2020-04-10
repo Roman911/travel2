@@ -1,34 +1,41 @@
 import React, { useState } from "react";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { Loading } from "../../Components";
+import { LocationInformation } from "../../modules";
 
 type MyGoogleMapsProps = {
   mapContainerStyle: { height: string, width: string }
   center: { lat: number, lng: number }
   zoom: number
-  marks: [{ id: number; coordinates: number[]; isType: string }]
+  locations: {
+    coordinates: string[]
+    isType: string
+    small_text: string
+    title: string
+  }[]
 }
 type setPark = {
   id: number
-  coordinates: number[]
+  coordinates: string[]
 }
 
-const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zoom, marks }) => {
+const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zoom, locations }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyDLRRgxqKe9Ok-an59Hh7qxfKZG0mGqHW8"
   });
   const [selectedPark, setSelectedPark] = useState<null | setPark>(null);
   const renderMap = () => {
     return <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      zoom={zoom}
-      center={center}
+      mapContainerStyle={ mapContainerStyle }
+      zoom={ zoom }
+      center={ center }
     >
-      {marks.map((park) => (
+      <LocationInformation />
+      {locations.map((park, index) => (
         <Marker
-          key={park.id}
+          key={ index }
           onClick={() => {
-            setSelectedPark(park)
+            setSelectedPark({ id: index, coordinates: park.coordinates })
           }}
           position={{lat: Number(park.coordinates[0]), lng: Number(park.coordinates[1])}}
           icon={{
@@ -38,7 +45,7 @@ const GoogleMaps: React.FC<MyGoogleMapsProps> = ({ mapContainerStyle, center, zo
       ))}
       {selectedPark && (
         <InfoWindow
-          position={{lat: selectedPark.coordinates[0], lng: selectedPark.coordinates[1]}}
+          position={{lat: Number(selectedPark.coordinates[0]), lng: Number(selectedPark.coordinates[1])}}
           onCloseClick={() => {
             setSelectedPark(null)
           }}

@@ -28,6 +28,21 @@ type Event {
   title: String!
 }
 
+type Locations {
+  _id: ID!
+  city: String
+  coordinates: [String]
+  createdAt: String
+  district: String
+  idAuthor: String
+  idPost: String
+  isType: String
+  region: String
+  small_text: String
+  tags: [String]
+  title: String
+}
+
 type Post {
   _id: ID!
   author: Author!
@@ -53,6 +68,7 @@ type RootMutation {
   addLike(postId: ID!, userId: ID!): Post
   cancelPost(postId: ID!): Event!
   createEvent(eventInput: EventInput): Event
+  createLocations(locationsInput: LocationsInput): Locations
   createPost(postInput: PostInput): Post
   createUser(userInput: UserInput): User
   postEvent(eventId: ID!): Post!
@@ -61,6 +77,7 @@ type RootMutation {
 
 type RootQuery {
   events: [Event!]!
+  locations: [Locations]
   login(email: String!, password: String!): AuthData!
   post(_id: ID!): Post!
   posts: [Post!]!
@@ -77,6 +94,19 @@ input EventInput {
   description: String!
   price: Float!
   title: String!
+}
+
+input LocationsInput {
+  city: String
+  coordinates: [String]
+  district: String
+  idAuthor: String
+  idPost: String
+  isType: String
+  region: String
+  small_text: String
+  tags: [String]
+  title: String
 }
 
 input PostInput {

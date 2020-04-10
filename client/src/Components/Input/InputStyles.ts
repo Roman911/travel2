@@ -47,5 +47,11 @@ export default StyleSheet.create({
   labelActive: {
     background: colorIcons,
     transition: '200ms'
+  },
+  // Select
+  option: {
+    margin: '6px 0',
+    fontWeight: 600,
+    color: colorText
   }
 })

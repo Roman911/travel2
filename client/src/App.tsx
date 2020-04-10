@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
-import { NavBar, Home, About, InformWindow, Maps } from './Components';
-import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts } from "./modules";
+import { NavBar, Home, About, InformWindow } from './Components';
+import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts, CreateLocation } from "./modules";
+import { Map } from "./Containers";
 import { UseAuth } from "./hooks/auth.hook";
 import { modalActions } from './redax/actions/';
 
@@ -28,9 +29,8 @@ const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
         <NavBar/>
         <Switch>
           <Route component={ Home } path="/" exact />
-          <Route component={ Maps } path="/maps" />
+          <Route component={ Map } path="/maps" />
           <Route
-            // @ts-ignore
             component={ Posts }
             path='/post/:id'
           />
@@ -38,6 +38,7 @@ const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
           <Route path="/login" >{ token ? <Redirect to="/" /> : <UseLoginForm /> }</Route>
           <Route path='/register'>{ ( registerData || token ) ? <Redirect to='/login' /> : <UseRegisterForm /> }</Route>
           <Route component={ CreatePostFormContainer } path="/create-post" />
+          <Route component={ CreateLocation } path="/create-location" />
         </Switch>
         { text && <InformWindow id={'modal'} children={ text } closedModal={ timeout } handleClick={ handleClick } /> }
       </div>

@@ -4,6 +4,10 @@ export const dropdownMenuItems = [
     route: '/create-post'
   },
   {
+    title: 'Додати лкацію',
+    route: '/create-location'
+  },
+  {
     title: 'Help',
     route: '/help'
   },

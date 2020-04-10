@@ -18,8 +18,8 @@ type MyInfoBarProps = {
 export const InfoBar:React.FC<MyInfoBarProps> = ({ coordinates, tickets, location, work_time, isType }) => {
   const mapContainerStyle = { height: "200px", width: "100%" };
   const center = { lat: Number(coordinates[0]), lng: Number(coordinates[1]) };
-  const zoom = 6;
-  const marks: any = [
+  const zoom = 11;
+  const locations: any = [
     {
       id: 1,
       coordinates: coordinates,
@@ -38,7 +38,7 @@ export const InfoBar:React.FC<MyInfoBarProps> = ({ coordinates, tickets, locatio
   </div>;
   
   return <section className={ css( baseStyles.boxShadow, styles.wrapper) }>
-    <GoogleMaps mapContainerStyle={ mapContainerStyle } center={ center } zoom={ zoom } marks={ marks } />
+    <GoogleMaps mapContainerStyle={ mapContainerStyle } center={ center } zoom={ zoom } locations={ locations } />
     <div className={ css(styles.content) }>
       <div className={ css(baseStyles.flex, styles.block) }>
         <FontAwesomeIcon className={ css(baseStyles.icon) } icon={ faMapMarkerAlt } />

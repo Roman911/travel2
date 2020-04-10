@@ -10,10 +10,10 @@ type MyInputProps = {
   value: string
 }
 
-export const Input = (props: MyInputProps & FormikProps<any>) => {
+export const Input: (props: (MyInputProps & FormikProps<any>)) => any = (props: MyInputProps & FormikProps<any>): any => {
   const { id, title, type, value, handleChange, handleBlur } = props;
   return <div className={css( styles.wrapper )}>
     <p className={css( styles.paragraph )}>{ title }</p>
-    <input className={css(styles.input)} id={id} type={type} value={value} onChange={handleChange} onBlur={handleBlur}/>
+    <input className={css(styles.input)} id={id} type={type} value={ value } onChange={handleChange} onBlur={handleBlur}/>
   </div>
 };

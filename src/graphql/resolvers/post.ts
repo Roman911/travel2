@@ -2,8 +2,27 @@ const Post = require('../../models/Post');
 // @ts-ignore
 const { transformPost } = require('./merge');
 
+type MyPostInputProps = {
+  title: string
+  idAuthor: string
+  type_material: string
+  coverNews: string
+  coverPost: string
+  link: string
+  tags: string[]
+  tickets: string[]
+  small_text: string
+  coordinates: number[]
+  location: string
+  work_time: string
+  isType: string
+  text: string
+  views: number
+  likes: string[]
+}
+
 module.exports = {
-  posts: async (args: any, req: { idAuthor: any; }) => {
+  posts: async (args: any, req: { idAuthor: string }) => {
     try {
       const posts = await Post.find({author: req.idAuthor});
       return posts.map((post: MyTransformPost) => {
@@ -25,7 +44,7 @@ module.exports = {
       throw err
     }
   },
-  createPost: async (args: { postInput: any; }) => {
+  createPost: async (args: { postInput: MyPostInputProps }) => {
     const { postInput } = args;
     const post = new Post({
       title: postInput.title,
@@ -41,7 +60,6 @@ module.exports = {
       location: postInput.location,
       work_time: postInput.work_time,
       isType: postInput.isType,
-      photo: postInput.phone,
       text: postInput.text,
       views: 0,
       likes: []

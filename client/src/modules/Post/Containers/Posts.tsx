@@ -9,7 +9,7 @@ type RouteParams = {
   id: string
 }
 
-const Posts = () => {
+const Posts: React.FC = (): any => {
   const _id: string = useParams<RouteParams>().id;
   const { loading, error, data } = useQuery(postQuery, {
     variables: { _id }

@@ -61,6 +61,32 @@ type AuthData {
   avatar: String
   name: String
 }
+type Locations {
+  _id: ID!
+  idAuthor: String
+  idPost: String
+  title: String
+  tags: [String]
+  small_text: String
+  coordinates: [String]
+  isType: String
+  createdAt: String
+  city: String
+  district: String
+  region: String
+}
+input LocationsInput {
+  idAuthor: String
+  idPost: String
+  title: String
+  tags: [String]
+  small_text: String
+  coordinates: [String]
+  isType: String
+  city: String
+  district: String
+  region: String
+}
 input EventInput {
   title: String!
   description: String!
@@ -77,6 +103,7 @@ type RootQuery {
     posts: [Post!]!
     post(_id: ID!): Post!
     login(email: String!, password: String!): AuthData!
+    locations: [Locations]
 }
 type RootMutation {
     createEvent(eventInput: EventInput): Event
@@ -86,6 +113,7 @@ type RootMutation {
     cancelPost(postId: ID!): Event!
     addLike(postId: ID!, userId: ID!): Post
     removeLike(postId: ID!, userId: ID!): Post
+    createLocations(locationsInput: LocationsInput): Locations
 }
 schema {
     query: RootQuery

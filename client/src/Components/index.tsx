@@ -16,3 +16,4 @@ export { Button } from './Button/Button';
 export { MiInput } from './Input/Radio';
 export { Input } from './Input/Input';
 export { Maps } from './Maps/Maps';
+export { Select } from './Select/Select';

@@ -5,9 +5,9 @@ import { useMutation } from '@apollo/react-hooks';
 import validateForm from "../../../utils/validate";
 import { CreatePost } from "../Components/CreatePost";
 import { addPostMutation } from "./mutations";
-
 import { User, UserData } from "../../../types/user";
-import {modalActions} from "../../../redax/actions";
+
+import { modalActions } from "../../../redax/actions";
 type MyCreatePostProps = {
   user: User
   data: UserData

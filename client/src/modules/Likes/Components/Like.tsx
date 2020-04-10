@@ -1,10 +1,10 @@
-import React from "react";
-import { css } from "aphrodite/no-important";
-import { faThumbsUp as faThumbsRegular } from "@fortawesome/free-regular-svg-icons";
-import { faThumbsUp as faThumbsSolid } from "@fortawesome/free-solid-svg-icons";
-import { LikeIcon } from './LikeIcon';
-import baseStyles from '../../../styles/';
-import styles from './LikeStyles';
+import React from "react"
+import { css } from "aphrodite/no-important"
+import { faThumbsUp as faThumbsRegular } from "@fortawesome/free-regular-svg-icons"
+import { faThumbsUp as faThumbsSolid } from "@fortawesome/free-solid-svg-icons"
+import { LikeIcon } from './LikeIcon'
+import baseStyles from '../../../styles/'
+import styles from './LikeStyles'
 
 type MyLikeProps = {
   post: boolean

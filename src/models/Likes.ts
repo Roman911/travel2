@@ -1,6 +1,4 @@
-import mongoose, {Schema, Document} from 'mongoose';
-
-// @ts-ignore
+import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ILikes extends Document {
   userId: object,

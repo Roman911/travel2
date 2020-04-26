@@ -1,6 +1,6 @@
 import { StyleSheet } from 'aphrodite/no-important';
 
-import { colorErrors, colorIsOk } from '../../variabels';
+import { colorErrors, colorIsOk } from '../variabels';
 
 export default StyleSheet.create({
   textP: {

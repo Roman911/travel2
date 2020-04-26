@@ -16,10 +16,11 @@ type Post {
     location: String
     work_time: String
     isType: String
-    text: String
+    editor: String
     views: Int
     likes: [String]
     createdAt: String
+    text: String
 }
 input PostInput {
   title: String
@@ -34,7 +35,7 @@ input PostInput {
   work_time: String
   isType: String
   photo: String
-  text: String
+  editor: String
 }
 type Event {
   _id: ID!
@@ -48,6 +49,19 @@ type User {
   _id: ID!
   email: String!
   password: String
+}
+type Comment {
+  idAuthor: ID
+  text: String
+  createdAt: String
+}
+type Comments {
+  _id: ID!
+  postId: ID!
+  idAuthor: ID!
+  text: String!
+  comments: [Comment]
+  createdAt: String
 }
 type Author {
   _id: ID!
@@ -107,6 +121,8 @@ type RootQuery {
     login(email: String!, password: String!): AuthData!
     locations: [Locations]
     location(_id: ID!): Locations
+    comments(postId: ID!): [Comments]
+    author(_id: ID!): Author
 }
 type RootMutation {
     createEvent(eventInput: EventInput): Event
@@ -117,6 +133,8 @@ type RootMutation {
     addLike(postId: ID!, userId: ID!): Post
     removeLike(postId: ID!, userId: ID!): Post
     createLocations(locationsInput: LocationsInput): Locations
+    createComment(postId: ID!, idAuthor: ID!, text: String!): Comments
+    addComment(_id: ID!, idAuthor: ID!, text: String!): Comments
 }
 schema {
     query: RootQuery

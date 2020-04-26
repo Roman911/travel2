@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "aphrodite/no-important"
-import { faThumbsUp as faThumbsRegular } from "@fortawesome/free-regular-svg-icons"
-import { faThumbsUp as faThumbsSolid } from "@fortawesome/free-solid-svg-icons"
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons"
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons"
 import { LikeIcon } from './LikeIcon'
 import baseStyles from '../../../styles/'
 import styles from './LikeStyles'
@@ -23,8 +23,8 @@ export const Like:React.FC<MyLikeProps> = ({ post, quantityLikes, userLike, hand
     css(baseStyles.icon, styles.icon, styles.iconPost) :
     css(baseStyles.icon, styles.icon);
   const handleChange = post ? userLike.length !== 0 ? handleChangeRemove : handleChangeAdd : () => {};
-  const iconThumbs = userLike.length !== 0 ? faThumbsSolid : faThumbsRegular;
-  const likeActive = <LikeIcon className={ className } handleChange={ handleChange } iconThumbs={ iconThumbs } />;
+  const iconHearts = userLike.length !== 0 ? faHeartSolid : faHeartRegular;
+  const likeActive = <LikeIcon className={ className } handleChange={ handleChange } iconHearts={ iconHearts } />;
 
   return <div className={ css(baseStyles.flex) }>
     { likeActive }

@@ -9,8 +9,8 @@ export default StyleSheet.create({
   wrapperBlock: {
     width: 'calc(100% - 360px)'
   },
-  wrapperRadio: {
-    
+  wrapperBlockNews: {
+    width: '100%'
   },
   container: {
     width: 350,

@@ -1,6 +1,5 @@
-const Post = require('../../models/Post');
-// @ts-ignore
-const { transformPost } = require('./merge');
+const Post = require('../../models/Post')
+const { transformPost } = require('./merge')
 
 type MyPostInputProps = {
   title: string
@@ -16,16 +15,17 @@ type MyPostInputProps = {
   location: string
   work_time: string
   isType: string
-  text: string
   views: number
   likes: string[]
+  text: string
+  editor: string
 }
 
 module.exports = {
   posts: async (args: any, req: { idAuthor: string }) => {
     try {
       const posts = await Post.find({author: req.idAuthor});
-      return posts.map((post: MyTransformPost) => {
+      return posts.map((post: any) => {
         return transformPost(post);
       });
     } catch (err) {
@@ -60,7 +60,7 @@ module.exports = {
       location: postInput.location,
       work_time: postInput.work_time,
       isType: postInput.isType,
-      text: postInput.text,
+      editor: postInput.editor,
       views: 0,
       likes: []
     });

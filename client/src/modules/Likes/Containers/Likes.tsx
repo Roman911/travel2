@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from 'react-redux';
-import { useMutation } from '@apollo/react-hooks';
-import { Like } from '../Components/Like';
-import { addLikeMutation, removeLikeMutation } from './mutations';
-import { postQuery } from '../../Post/Containers/queries';
-import { modalActions } from "../../../redax/actions";
+import React from "react"
+import { connect } from 'react-redux'
+import { useMutation } from '@apollo/react-hooks'
+import { Like } from '../Components/Like'
+import { addLikeMutation, removeLikeMutation } from './mutations'
+import { postQuery } from '../../Post/Containers/queries'
+import { modalActions } from "../../../redax/actions"
 
-import { User } from "../../../types/user";
+import { User } from "../../../types/user"
 type MyLikesProps = {
   id: string
-  likes: []
+  likes: string[]
   post: boolean
   showModal: (arg0: string) => void
   user: User

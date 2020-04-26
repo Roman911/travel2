@@ -15,5 +15,18 @@ export default StyleSheet.create({
   },
   btnGray: {
     background: 'gray'
+  },
+//  ButtonText
+  btnLink: {
+    fontSize: '0.65rem',
+    color: 'rgba(0,0,0,.5)',
+    textTransform: 'uppercase',
+    cursor: 'pointer',
+    fontWeight: 800,
+    marginBottom: 8,
+    marginRight: 14,
+    ':hover': {
+      color: colorBtn
+    }
   }
 })

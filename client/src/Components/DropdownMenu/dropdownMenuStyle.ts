@@ -1,6 +1,6 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
-import { colorIcons } from "../../variabels";
+import { colorIcons } from "../../variabels"
 
 export default StyleSheet.create({
   wrapper: {
@@ -37,12 +37,15 @@ export default StyleSheet.create({
     flexDirection: 'column'
   },
   li: {
-    padding: '8px 10px',
-    cursor: 'pointer',
+    padding: 0
+  },
+  link: {
     transition: '200ms',
+    padding: '8px 10px',
+    display: 'block',
     ':hover': {
-      background: '#0366d6',
-      color: '#ffff'
+      color: '#fff',
+      background: '#303335',
     }
   }
 })

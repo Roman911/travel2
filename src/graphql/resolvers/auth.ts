@@ -57,5 +57,12 @@ module.exports = {
       }
     );
     return { userId: user.id, token: token, tokenExpiration: 1, name: user.name, avatar: user.avatar };
-  }
+  },
+  author: async (args: { _id: string }) => {
+    try {
+      return await User.findById(args._id)
+    } catch (err) {
+      throw err;
+    }
+  },
 };

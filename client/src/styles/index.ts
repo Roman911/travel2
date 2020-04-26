@@ -48,7 +48,7 @@ export default StyleSheet.create({
     height: 14,
     width: 'auto !important',
     color: colorIcons,
-    marginLeft: 6
+    marginRight: 8
   },
   imgAv: {
     borderRadius: '50%',

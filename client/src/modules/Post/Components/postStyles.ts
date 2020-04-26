@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
 import { widthL } from '../../../variabels'
 
@@ -9,7 +9,8 @@ export default StyleSheet.create({
   wrapper: {
     padding: '10px 20px',
     margin: 10,
-    width: 'calc(100% - 370px)'
+    width: 'calc(100% - 370px)',
+    background: '#fff'
   },
   title: {
     margin: '10px 0'

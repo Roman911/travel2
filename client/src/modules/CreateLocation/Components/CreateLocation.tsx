@@ -2,11 +2,12 @@ import React from "react";
 import { css } from "aphrodite/no-important";
 import { FormikProps } from "formik";
 
-import {Button, Input, SectionTitle, Select} from "../../../Components";
+import {Button, Input, SectionTitle } from "../../../Components";
 import styles from "./CreateLocationStyles";
 import baseStyle from "../../../styles";
 import stylesInput from "../../../Components/Input/InputStyles";
 import loginStyles from "../../../styles/loginStyles";
+import {optionItem} from "../../../Components/Select/select.config";
 
 export const Location: React.FC<FormikProps<any>> = props => {
   const {
@@ -22,8 +23,14 @@ export const Location: React.FC<FormikProps<any>> = props => {
       <form onSubmit={ handleSubmit }>
         // @ts-ignore
         <Input id='title' title='Назва локації:' type='text' value={ values.title } handleChange={ handleChange } handleBlur={ handleBlur } />
-        // @ts-ignore
-        <Select handleChange={ handleChange } handleBlur={ handleBlur } />
+        <section className={css( stylesInput.wrapper )}>
+          <p className={css( stylesInput.paragraph )}>Тип:</p>
+          <select className={css(stylesInput.input)} name="isType" id="isType" onChange={ handleChange } onBlur={ handleBlur }>
+            { optionItem.map((item, index) => {
+              return <option key={ index } className={ css(stylesInput.option) } value={ item.value }>{ item.title }</option>
+            })}
+          </select>
+        </section>
         // @ts-ignore
         <Input id='region' title='Область' type='text' value={ values.region } handleChange={ handleChange } handleBlur={ handleBlur } />
         // @ts-ignore
@@ -43,7 +50,7 @@ export const Location: React.FC<FormikProps<any>> = props => {
         // @ts-ignore
         <Input id='small_text' title='Короткий опис:' type='text' value={ values.small_text } handleChange={ handleChange } handleBlur={ handleBlur } />
         <div className={ css(loginStyles.inputSub) }>
-          <Button type="submit" nameBtn='Зберегти' isSubmitting={ isSubmitting } handleClick={ null } />
+          <Button type="submit" nameBtn='Зберегти' isSubmitting={ isSubmitting } />
         </div>
       </form>
     </div>

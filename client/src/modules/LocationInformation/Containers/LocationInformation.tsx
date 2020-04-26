@@ -1,6 +1,6 @@
 import React from "react"
-import { Information } from "../Components/Information"
 import { useQuery } from '@apollo/react-hooks'
+import { Information } from "../Components/Information"
 import { locationQuery } from './queries'
 import { Loading } from "../../../Components"
 

@@ -1,11 +1,11 @@
-import React from "react";
-import { css } from 'aphrodite/no-important';
-import styles from "./ButtonStyles";
+import React from "react"
+import { css } from 'aphrodite/no-important'
+import styles from "./ButtonStyles"
 
 type MyButtonProps = {
-  type: "button" | "submit" | "reset" | undefined
+  type?: "button" | "submit" | "reset"
   nameBtn: string
-  handleClick: (() => void) | null
+  handleClick?: (() => void)
   isSubmitting: boolean
 }
 

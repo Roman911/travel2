@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Redirect, } from "react-router-dom";
 import { NavBar, Home, About, InformWindow } from './Components';
-import { UseRegisterForm, UseLoginForm, CreatePostFormContainer, Posts, CreateLocation } from "./modules";
+import { CreatePostFormContainer, Posts, CreateLocation } from "./modules";
+import { LoginForm, RegisterForm } from "./Containers";
 import { Map } from "./Containers";
 import { UseAuth } from "./hooks/auth.hook";
 import { modalActions } from './redax/actions/';
@@ -35,8 +36,8 @@ const App:React.FC<MyAppProps> = ({ user, modal,  handleClick }) => {
             path='/post/:id'
           />
           <Route component={ About } path="/about" />
-          <Route path="/login" >{ token ? <Redirect to="/" /> : <UseLoginForm /> }</Route>
-          <Route path='/register'>{ ( registerData || token ) ? <Redirect to='/login' /> : <UseRegisterForm /> }</Route>
+          <Route path="/login" >{ token ? <Redirect to="/" /> : <LoginForm /> }</Route>
+          <Route path='/register'>{ ( registerData || token ) ? <Redirect to='/login' /> : <RegisterForm /> }</Route>
           <Route component={ CreatePostFormContainer } path="/create-post" />
           <Route component={ CreateLocation } path="/create-location" />
         </Switch>

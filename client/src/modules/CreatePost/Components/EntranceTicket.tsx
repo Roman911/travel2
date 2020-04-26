@@ -10,8 +10,8 @@ type MyEntranceTicketProps = {
   type: string
   value: string
 }
-
-export const EntranceTicket = (props: MyEntranceTicketProps & FormikProps<any>) => {
+// @ts-ignore
+export const EntranceTicket: React.FC = (props: MyEntranceTicketProps & FormikProps<any>): any => {
   const { id, title, type, value, handleChange, handleBlur } = props;
   return <div className={ css(stylesInput.wrapper) }>
       <p className={css( stylesInput.paragraph, styles.textSmall )}>{ title }</p>

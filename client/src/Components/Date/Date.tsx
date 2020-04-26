@@ -9,5 +9,5 @@ interface DateProps {
 }
 
 export const Date:React.FC<DateProps> = ({ date, format }) => {
-  return <p className={ css(styles.time) }>{moment(date).format(format)}</p>
+  return <p className={ css(styles.time) }>{ moment.utc(`Date(${ date })`).format(format) }</p>
 };

@@ -1,5 +1,5 @@
 export type User = {
-  data: null | UserData
+  data: UserData
   registerData: null | CreateUserData
 }
 

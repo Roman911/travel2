@@ -1,4 +1,6 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
+
+import { colorBtn } from '../../../variabels'
 
 export default StyleSheet.create({
   text: {
@@ -10,7 +12,7 @@ export default StyleSheet.create({
     paddingBottom: 4
   },
   iconActive: {
-    color: '#3466b1e3'
+    color: colorBtn
   },
   iconPost: {
     cursor: 'pointer'

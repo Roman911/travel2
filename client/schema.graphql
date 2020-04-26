@@ -19,6 +19,21 @@ type Author {
   name: String
 }
 
+type Comment {
+  createdAt: String
+  idAuthor: ID
+  text: String
+}
+
+type Comments {
+  _id: ID!
+  comments: [Comment]
+  createdAt: String
+  idAuthor: ID!
+  postId: ID!
+  text: String!
+}
+
 type Event {
   _id: ID!
   creator: User!
@@ -51,6 +66,7 @@ type Post {
   coverNews: String
   coverPost: String
   createdAt: String
+  editor: String
   isType: String
   likes: [String]
   link: String
@@ -66,8 +82,10 @@ type Post {
 }
 
 type RootMutation {
+  addComment(_id: ID!, idAuthor: ID!, text: String!): Comments
   addLike(postId: ID!, userId: ID!): Post
   cancelPost(postId: ID!): Event!
+  createComment(idAuthor: ID!, postId: ID!, text: String!): Comments
   createEvent(eventInput: EventInput): Event
   createLocations(locationsInput: LocationsInput): Locations
   createPost(postInput: PostInput): Post
@@ -77,6 +95,8 @@ type RootMutation {
 }
 
 type RootQuery {
+  author(_id: ID!): Author
+  comments(postId: ID!): [Comments]
   events: [Event!]!
   location(_id: ID!): Locations
   locations: [Locations]
@@ -114,6 +134,7 @@ input LocationsInput {
 
 input PostInput {
   coordinates: [String]
+  editor: String
   idAuthor: ID
   isType: String
   link: String
@@ -121,7 +142,6 @@ input PostInput {
   photo: String
   small_text: String
   tags: [String]
-  text: String
   tickets: [String]
   title: String
   type_material: String

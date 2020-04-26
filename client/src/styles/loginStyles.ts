@@ -38,7 +38,7 @@ export default StyleSheet.create({
     margin: '10px 0 6px'
   },
   inputSub: {
-    margin: '20px 0',
+    margin: '10px 0',
     textAlign: 'end'
   },
   bottomBlock: {

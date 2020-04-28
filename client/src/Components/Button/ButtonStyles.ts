@@ -8,6 +8,7 @@ export default StyleSheet.create({
     padding: '8px 16px',
     background: colorBtn,
     color: '#fff',
+    textTransform: 'uppercase',
     transition: '200ms',
     ':hover': {
       boxShadow: `0 5px 16px rgba(0,0,0,.16)`,

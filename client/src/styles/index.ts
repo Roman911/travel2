@@ -1,6 +1,6 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
-import { widthL, heightIconXL, colorIcons, colorShadow } from "../variabels";
+import { widthL, heightIconXL, colorIcons, colorShadow } from "../variabels"
 
 export default StyleSheet.create({
   wrapper: {
@@ -51,9 +51,15 @@ export default StyleSheet.create({
     marginRight: 8
   },
   imgAv: {
-    borderRadius: '50%',
+    borderRadius: '50%'
+  },
+  avatarS: {
     width: 40,
     height: 40
+  },
+  avatarL: {
+    width: 80,
+    height: 80
   },
   bottom: {
     borderTop: '1px solid #cccccc'

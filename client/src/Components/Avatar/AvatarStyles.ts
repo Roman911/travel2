@@ -5,6 +5,6 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: '20px',
     justifyContent: 'center',
-    margin: '0 6px 0 8px'
+    margin: '0 auto'
   }
 })

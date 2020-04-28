@@ -8,6 +8,7 @@ export type UserData = {
   token: string
   avatar: string
   name: string
+  email: string
 }
 
 export type CreateUserData = {

@@ -1,30 +1,29 @@
-import { Modal } from "../../types/modal"
 const initialState = {
-  text: null,
-  timeout: null,
+  showSidebar: null,
+  isOpen: null
 };
 
 type ActionType = {
-  payload: Modal
   type: string
 }
 
 export default (state = initialState, actions: ActionType) => {
   switch (actions.type) {
-    case 'SHOW_MODAL':
+    case 'SHOW_SIDEBAR':
       return {
         ...state,
-        text: actions.payload
+        showSidebar: true
       };
-    case 'HIDE_MODAL':
+    case 'HIDE_SIDEBAR':
       return {
         ...state,
-        text: null
+        showSidebar: null,
+        isOpen: null
       };
-    case 'HIDE_TIMEOUT':
+    case 'CLOSE_SIDEBAR':
       return {
         ...state,
-        timeout: actions.payload
+        isOpen: true
       };
     default:
       return state;

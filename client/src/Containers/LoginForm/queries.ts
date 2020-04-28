@@ -8,6 +8,7 @@ export const loginQuery = gql`
       tokenExpiration
       avatar
       name
+      email
     }
   }
 `;

@@ -47,7 +47,7 @@ const LoginForm:React.FC<MyUseLoginFormProps> = ({ setData, showModal }) => {
     const { login } = data;
     setData(login);
     localStorage.setItem('userData', JSON.stringify({
-      userId: login.userId, token: login.token, name: login.name, avatar: login.avatar
+      userId: login.userId, token: login.token, name: login.name, avatar: login.avatar, email: login.email
     }));
     showModal('Ви успішно увійшли!');
   }

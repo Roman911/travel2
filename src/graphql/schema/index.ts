@@ -74,6 +74,7 @@ type AuthData {
   tokenExpiration: Int!
   avatar: String
   name: String
+  email: String
 }
 type Locations {
   _id: ID!

@@ -23,7 +23,7 @@ export const ShowComment: React.FC<MyShowCommentProps> = ({ _id, date, text, idC
   if (error) return `Error! ${error}`
   const { author } = data
   return <section className={ css(baseStyle.flexVFS) }>
-    <Avatar avatar={ author.avatar } name={ author.name } />
+    <Avatar avatar={ author.avatar } name={ author.name } size='S' />
     <Comment name={ author.name } date={ date } text={ text } idComment={ idComment } comments={ comments } postId={ postId } />
   </section>
 }

@@ -16,7 +16,7 @@ export const AuthorPost: React.FC<MyAuthorPostProps> = ({ isArticle, author, dat
   const { avatar, name } = author;
   return <div className={css(baseStyles.flexSB, baseStyles.block)}>
     <div className={css(baseStyles.flex)}>
-      <Avatar avatar={ avatar } name={ name } />
+      <Avatar avatar={ avatar } name={ name } size='S' />
       <div className={css(!isArticle ? styles.blockName : styles.isArticle)}>
         <NameUser name={ name } />
         { isArticle && <div className={ css(styles.separator) } /> }

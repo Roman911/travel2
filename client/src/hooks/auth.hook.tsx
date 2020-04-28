@@ -1,19 +1,14 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { userActions } from "../redax/actions/";
-
-const storageName = 'userData';
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { userActions } from "../redax/actions/"
+const storageName = 'userData'
 
 export const UseAuth = () => {
-
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch()
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName) as string);
-
+    const data = JSON.parse(localStorage.getItem(storageName) as string)
     if (data) {
       dispatch(userActions.setData(data))
     }
-  }, [dispatch]);
-};
+  }, [dispatch])
+}

@@ -56,7 +56,7 @@ module.exports = {
         expiresIn: '1h'
       }
     );
-    return { userId: user.id, token: token, tokenExpiration: 1, name: user.name, avatar: user.avatar };
+    return { userId: user.id, token: token, tokenExpiration: 1, name: user.name, avatar: user.avatar, email: user.email };
   },
   author: async (args: { _id: string }) => {
     try {

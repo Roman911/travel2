@@ -60,7 +60,7 @@ export const CreateComment: React.FC<MyCreateCommentProps> = ({ user, postId, id
   return <form onSubmit={ handleSubmit }>
     <div className={ css(styles.wrapper) }>
       {data ? <>
-        <Avatar avatar={ data.avatar } name={ data.name } />
+        <Avatar avatar={ data.avatar } name={ data.name } size='S' />
         <div className={ css(styles.block) }>
           <textarea id='text' className={ css(styles.textarea) } placeholder='Ваш коментар...' onChange={handleChange} onBlur={handleBlur} value={ values.text || '' } />
         </div>

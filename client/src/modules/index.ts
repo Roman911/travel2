@@ -6,3 +6,4 @@ export { default as CreateLocation } from './CreateLocation/Containers/CreateLoc
 export { default as LocationInformation } from './LocationInformation/Containers/LocationInformation'
 export { default as Comments } from './Comments/Containers/Comments'
 export { default as CreateComment } from './Comments/Containers/CreateComment'
+export { default as ProfileSidebar } from './ProfileSidebar/Containers/ProfileSidebar'

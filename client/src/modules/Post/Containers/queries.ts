@@ -17,6 +17,7 @@ export const postQuery = gql`
       work_time
       isType
       editor
+      locationId
       author {
         _id
         name

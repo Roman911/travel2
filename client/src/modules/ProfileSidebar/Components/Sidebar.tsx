@@ -20,7 +20,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ name, avatar, email, closeSide
 
   const sidebar = sidebarMenuItems.map((item, index) => {
     return <li className={ css(styles.li) } key={ index }>
-      <Link className={ css(styles.link) } to={ item.route }>{ item.title }</Link>
+      <Link onClick={ () => closeSidebar() } className={ css(styles.link) } to={ item.route }>{ item.title }</Link>
     </li>
   })
 

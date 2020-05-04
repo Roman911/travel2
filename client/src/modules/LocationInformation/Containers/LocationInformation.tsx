@@ -14,9 +14,9 @@ const LocationInformation: React.FC<MyLocationInformationProps> = ({ _id, handle
   const { loading, error, data } = useQuery(locationQuery, {
     variables: { _id }
   });
-  if (loading) return <Loading />;
-  if (error) return `Error! ${error}`;
-  const { location } = data;
+  if (loading) return <Loading />
+  if (error) return `Error! ${error}`
+  const { location } = data
   return <Information location={ location } handleClick={ handleClick } closeWindow={ closeWindow } />
 }
 

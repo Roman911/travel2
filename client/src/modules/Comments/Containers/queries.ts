@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import { gql } from 'apollo-boost'
 
 export const commentsQuery = gql`
   query comments($postId: ID!) {
@@ -14,8 +14,7 @@ export const commentsQuery = gql`
       }
     }
   }
-`;
-
+`
 export const authorQuery = gql`
   query author($_id: ID!) {
     author(_id: $_id) {
@@ -23,4 +22,4 @@ export const authorQuery = gql`
       name
     }
   }
-`;
+`

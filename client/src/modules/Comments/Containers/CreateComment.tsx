@@ -12,7 +12,7 @@ import styles from "../Components/CommentsStyle"
 import loginStyles from "../../../styles/loginStyles"
 
 import { User } from "../../../types/user"
-import { commentsQuery } from "./queries";
+import { commentsQuery } from "./queries"
 type MyCreateCommentProps = {
   user: User
   postId: string
@@ -72,7 +72,7 @@ export const CreateComment: React.FC<MyCreateCommentProps> = ({ user, postId, id
       </>}
     </div>
     <div className={ css(loginStyles.inputSub) }>
-      { isFirstComment || <ButtonLink nameBtn='Скасувати'  handleClick={ handleClick } /> }
+      { isFirstComment || <ButtonLink nameBtn='Скасувати' handleClick={ handleClick } /> }
       <Button type="submit" nameBtn='Коментувати' isSubmitting={ !data } />
     </div>
   </form>

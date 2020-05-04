@@ -14,4 +14,5 @@ export type PostData = {
   work_time: string
   isType: string
   editor: string
+  locationId: string
 }

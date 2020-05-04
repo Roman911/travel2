@@ -16,17 +16,17 @@ type MyLikesProps = {
 }
 
 const Likes:React.FC<MyLikesProps> = ({ id, likes, post, user, showModal }) => {
-  const { data } = user;
-  const quantityLikes = likes.length;
-  const userId = data ? data.userId : undefined;
+  const { data } = user
+  const quantityLikes = likes.length
+  const userId = data ? data.userId : undefined
   const userLike = likes.filter((item: string | undefined) => {
     if (item === userId) {
       return item
     }
     return 0
-  });
-  const [addLike] = useMutation(addLikeMutation);
-  const [removeLike] = useMutation(removeLikeMutation);
+  })
+  const [addLike] = useMutation(addLikeMutation)
+  const [removeLike] = useMutation(removeLikeMutation)
   const handleChangeAdd = () => {
     if (userId) {
       addLike({
@@ -39,7 +39,7 @@ const Likes:React.FC<MyLikesProps> = ({ id, likes, post, user, showModal }) => {
     } else {
       showModal('Для виконання данної дії потрібно авторизоватись')
     }
-   };
+   }
   const handleChangeRemove = () => {
     removeLike({
       variables: { postId: id, userId: userId },
@@ -49,16 +49,12 @@ const Likes:React.FC<MyLikesProps> = ({ id, likes, post, user, showModal }) => {
       }]
     })
       .then(r =>r)
-  };
-  return <>
-      <Like
-        post={ post } quantityLikes={ quantityLikes } userLike={ userLike } handleChangeAdd={ handleChangeAdd } handleChangeRemove={ handleChangeRemove }
-      />
-    </>
-};
+  }
+  return <Like post={ post } quantityLikes={ quantityLikes } userLike={ userLike } handleChangeAdd={ handleChangeAdd } handleChangeRemove={ handleChangeRemove }/>
+}
 
 const mapStateToProps = (state: { user: User }) => ({
   user: state.user
-});
+})
 
 export default connect(mapStateToProps, { ...modalActions })(Likes)

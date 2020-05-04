@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose'
 
 export interface ILocations extends Document {
   idAuthor: string,
@@ -37,6 +37,6 @@ const LocationsSchema = new Schema({
   },
 }, {
   timestamps: true
-});
+})
 
-module.exports = mongoose.model<ILocations>('Locations', LocationsSchema);
+module.exports = mongoose.model<ILocations>('Locations', LocationsSchema)

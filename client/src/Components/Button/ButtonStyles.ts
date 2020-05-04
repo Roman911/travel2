@@ -29,5 +29,8 @@ export default StyleSheet.create({
     ':hover': {
       color: colorBtn
     }
+  },
+  icon: {
+    marginRight: 6
   }
 })

@@ -60,6 +60,14 @@ type Locations {
   title: String
 }
 
+type LocationsUserList {
+  _id: ID
+  action: String
+  createdAt: String
+  locationId: String
+  userId: String
+}
+
 type Post {
   _id: ID!
   author: Author!
@@ -72,6 +80,7 @@ type Post {
   likes: [String]
   link: String
   location: String
+  locationId: String
   small_text: String
   tags: [String]
   text: String
@@ -85,6 +94,7 @@ type Post {
 type RootMutation {
   addComment(_id: ID!, idAuthor: ID!, text: String!): Comments
   addLike(postId: ID!, userId: ID!): Post
+  addLocationsUserList(_id: ID, action: String, locationId: ID, userId: ID): LocationsUserList
   cancelPost(postId: ID!): Event!
   createComment(idAuthor: ID!, postId: ID!, text: String!): Comments
   createEvent(eventInput: EventInput): Event
@@ -93,6 +103,7 @@ type RootMutation {
   createUser(userInput: UserInput): User
   postEvent(eventId: ID!): Post!
   removeLike(postId: ID!, userId: ID!): Post
+  removeLocationWithUserList(_id: ID!): LocationsUserList
 }
 
 type RootQuery {
@@ -100,7 +111,10 @@ type RootQuery {
   comments(postId: ID!): [Comments]
   events: [Event!]!
   location(_id: ID!): Locations
+  locationUser(locationId: ID!, userId: ID!): LocationsUserList
   locations: [Locations]
+  locationsSort(types: [String]): [Locations]
+  locationsUserList(action: String, userId: ID!): [LocationsUserList]
   login(email: String!, password: String!): AuthData!
   post(_id: ID!): Post!
   posts: [Post!]!

@@ -8,7 +8,6 @@ import { ArticleStats, AuthorPost } from "../../../Components"
 import { Likes } from '../../'
 
 import { Item } from '../../../types/news'
-
 type MyNewProps = {
   item: Item,
   comments: string[]
@@ -23,9 +22,10 @@ export const ShowNew:React.FC<MyNewProps> = ({ item, comments }) => {
       <div className={ css(styles.block) }>
         <AuthorPost isArticle={ false } author={ item.author } date={ item.createdAt } />
         <Link to={`/post/${ item._id }`} >
-        <div className={ css(baseStyles.block) }>
+        <div className={ css(baseStyles.block, baseStyles.blockText) }>
           <h3>{ item.title }</h3>
           <p>{ item.small_text }</p>
+          <div className={ css(baseStyles.shadow) } />
         </div>
         </Link>
       </div>

@@ -5,7 +5,6 @@ import { commentsQuery } from "./queries"
 import { Loading } from "../../../Components"
 
 import { Item } from '../../../types/news'
-
 type MyNewProps = {
   item: Item
 }

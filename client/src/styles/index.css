@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(56, 56, 56);
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   line-height: 26px;
 }
 
@@ -50,7 +50,7 @@ button {
   background: none;
   cursor: pointer;
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: Montserrat, sans-serif;
   font-weight: 100;
 }
@@ -70,6 +70,10 @@ h3 {
   margin: 0.7rem 0 1rem;
 }
 h4 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0.6rem;
+}
+h5 {
   font-size: 1.2rem;
   margin: 0.5rem 0 0.6rem;
 }

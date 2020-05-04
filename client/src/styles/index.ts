@@ -25,6 +25,18 @@ export default StyleSheet.create({
   block: {
     paddingBottom: 10
   },
+  blockText: {
+    height: 200,
+    overflowY: 'hidden',
+    position: 'relative'
+  },
+  shadow: {
+    position: 'absolute',
+    height: 25,
+    background: 'linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.1) 100%)',
+    width: '100%',
+    bottom: 0
+  },
   boxShadow: {
     boxShadow: `3px 0px 20px ${colorShadow}`,
   },
@@ -49,17 +61,6 @@ export default StyleSheet.create({
     width: 'auto !important',
     color: colorIcons,
     marginRight: 8
-  },
-  imgAv: {
-    borderRadius: '50%'
-  },
-  avatarS: {
-    width: 40,
-    height: 40
-  },
-  avatarL: {
-    width: 80,
-    height: 80
   },
   bottom: {
     borderTop: '1px solid #cccccc'

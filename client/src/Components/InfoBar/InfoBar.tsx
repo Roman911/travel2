@@ -1,11 +1,11 @@
-import React from 'react';
-import { css } from 'aphrodite/no-important';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
-import { faClock } from "@fortawesome/free-regular-svg-icons";
+import React from 'react'
+import { css } from 'aphrodite/no-important'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons"
+import { faClock } from "@fortawesome/free-regular-svg-icons"
 import { GoogleMaps } from '../../Containers/'
-import baseStyles from '../../styles/';
-import styles from './InfoBarStyle';
+import baseStyles from '../../styles/'
+import styles from './InfoBarStyle'
 
 type MyInfoBarProps = {
   coordinates: string

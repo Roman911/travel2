@@ -24,19 +24,19 @@ type MyPostInputProps = {
 module.exports = {
   posts: async (args: any, req: { idAuthor: string }) => {
     try {
-      const posts = await Post.find({author: req.idAuthor});
+      const posts = await Post.find({author: req.idAuthor})
       return posts.map((post: any) => {
-        return transformPost(post);
+        return transformPost(post)
       });
     } catch (err) {
-      throw err;
+      throw err
     }
   },
   post: async (args: { _id: string }) => {
     try {
-      const post = await Post.findById(args._id);
+      const post = await Post.findById(args._id)
       if (post) {
-        post.views++;
+        post.views++
         await post.save()
       }
       return transformPost(post)
@@ -68,10 +68,10 @@ module.exports = {
   },
   addLike: async (args: { postId: string; userId: string }) => {
     try {
-      const post = await Post.findById(args.postId);
-      const { likes } = post;
+      const post = await Post.findById(args.postId)
+      const { likes } = post
       if (post) {
-        likes.push(args.userId);
+        likes.push(args.userId)
         await post.save()
       }
       return post
@@ -81,10 +81,10 @@ module.exports = {
   },
   removeLike: async (args: { postId: string; userId: string }) => {
     try {
-      const post = await Post.findById(args.postId);
-      const { likes } = post;
+      const post = await Post.findById(args.postId)
+      const { likes } = post
       if (post) {
-        likes.pop(args.userId);
+        likes.pop(args.userId)
         await post.save()
       }
     } catch (err) {

@@ -5,6 +5,9 @@ export type Locations = {
 }[]
 
 export type Location = {
+  city: string
+  district: string
+  region: string
   cover: string
   linkToPost: string
   small_text: string

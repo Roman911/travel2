@@ -23,7 +23,7 @@ const UseRoutes = (props: { user: User, showSidebar: () => void }): any => {
   }
   return <Link to="/login">
     <div className={ css(baseStyles.flexSB) } >
-      Увійти
+      <p>Увійти</p>
       <FontAwesomeIcon className={ css(baseStyles.icon, styles.user) } icon={ faUser }/>
     </div>
   </Link>

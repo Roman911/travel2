@@ -1,4 +1,4 @@
-const {buildSchema} = require('graphql');
+const {buildSchema} = require('graphql')
 
 module.exports = buildSchema(`
 type Post {
@@ -21,6 +21,7 @@ type Post {
     likes: [String]
     createdAt: String
     text: String
+    locationId: String
 }
 input PostInput {
   title: String
@@ -104,6 +105,13 @@ input LocationsInput {
   district: String
   region: String
 }
+type LocationsUserList {
+  _id: ID
+  userId: String
+  locationId: String
+  action: String
+  createdAt: String
+}
 input EventInput {
   title: String!
   description: String!
@@ -121,9 +129,12 @@ type RootQuery {
     post(_id: ID!): Post!
     login(email: String!, password: String!): AuthData!
     locations: [Locations]
+    locationsSort(types: [String]): [Locations]
     location(_id: ID!): Locations
+    locationUser(userId: ID!, locationId: ID!): LocationsUserList
     comments(postId: ID!): [Comments]
     author(_id: ID!): Author
+    locationsUserList(userId: ID!, action: String): [LocationsUserList]
 }
 type RootMutation {
     createEvent(eventInput: EventInput): Event
@@ -134,11 +145,13 @@ type RootMutation {
     addLike(postId: ID!, userId: ID!): Post
     removeLike(postId: ID!, userId: ID!): Post
     createLocations(locationsInput: LocationsInput): Locations
+    addLocationsUserList(_id: ID, userId: ID, locationId: ID, action: String): LocationsUserList
     createComment(postId: ID!, idAuthor: ID!, text: String!): Comments
     addComment(_id: ID!, idAuthor: ID!, text: String!): Comments
+    removeLocationWithUserList(_id: ID!): LocationsUserList
 }
 schema {
     query: RootQuery
     mutation: RootMutation
 }
-`);
+`)

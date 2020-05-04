@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important'
-import { colorIcons, colorBtn } from '../../../variabels'
+import { colorIcons, colorBtn, colorBackgroundModal } from '../../../variabels'
 
 const translateSidebar = {
   '0%': {
@@ -39,7 +39,7 @@ export default StyleSheet.create({
     height: '100vh',
     right: 0,
     width: 300,
-    background: '#303335',
+    background: colorBackgroundModal,
     padding: '30px 10px',
     textAlign: 'center'
   },

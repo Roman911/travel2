@@ -7,3 +7,7 @@ export { default as LocationInformation } from './LocationInformation/Containers
 export { default as Comments } from './Comments/Containers/Comments'
 export { default as CreateComment } from './Comments/Containers/CreateComment'
 export { default as ProfileSidebar } from './ProfileSidebar/Containers/ProfileSidebar'
+export { default as Profile } from './Profile/Containers/Profile'
+export { default as Populars } from './Populars/Containers/Populars'
+export { default as ModalSetting } from './ModalSetting/Containers/ModalSetting'
+export { default as InformUserLocation } from './InformUserLocation/Containers/InformUserLocation'
